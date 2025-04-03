@@ -10,4 +10,7 @@ html(lang="en")
         br
         h1.text-white.text-4xl Welcome, Player 1!
         br
-        input(type="text", placeholder="Insert text here")
+        form(action="/users/player1", method="POST")
+            input(type="text", name="codeGuess", placeholder="Insert code here", value=prevGuess)
+            button(type="submit") Submit
+

@@ -6,6 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+var char = '𓅗';
+console.log(char);
 router.get('/player1', function(req, res, next) {
   res.render('player1');
 });

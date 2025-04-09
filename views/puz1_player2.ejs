@@ -4,28 +4,38 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=dece-width, initial-scale=1.0"/>
     <title>Player 2 Manual</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-red-900 text-white flex flex-col items-center justify-center h-screen">
+<body class="bg-red-900 text-white flex flex-col items-center h-screen">
 <h1 class="text-4xl mb-4">Manual</h1>
 <p class="text-lg max-w-md text-center">Welcome, Player 2!</p>
-<table id="dictionaryTable">
+<table id="header">
     <tr>
-        <th>Hieroglyph dictionary</th>
+        <th class="tableHeader">Hieroglyph dictionary</th>
     </tr>
 </table>
+<table id="dictionaryTable" class="dictionary"></table>
 <script>
-    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '𓏞', '𓅾', '𓃂', '𓂯', '𓉩',
         '𓀼', '𓃩', '𓅷', '𓁲', '𓄰', '𓈣', 'ඞ', '𓂻', '𓅒', '𓂙', '𓁿', '𓈝', '𓆦', '𓋣'];
-    var table = document.getElementById("dictionaryTable");
-    var row = table.insertRow(1);
+    let table = document.getElementById("dictionaryTable");
+    let row_normal1 = table.insertRow(0);
+    let row_normal2 = table.insertRow(0);
+    let row_code1 = table.insertRow(1);
+    let row_code2 = table.insertRow(2);
     for (let i = 0; i < alphabet.length; i++) {
-        row.insertCell(i).innerText = alphabet[i] + " = " + code_alphabet[i];
+        if (i < alphabet.length / 2) {
+            row_normal1.insertCell(i).innerText = alphabet[i];
+            row_code1.insertCell(i).innerText = code_alphabet[i];
+        } else {
+            row_normal2.insertCell(i).innerText = alphabet[i];
+            row_code2.insertCell(i).innerText = code_alphabet[i];
+        }
     }
-</script>
 
-%>
+</script>
 </body>
 </html>

@@ -7,29 +7,27 @@ let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '�
     '𓀼', '𓃩', '𓅷', '𓁲', '𓄰', '𓈣', 'ඞ', '𓂻', '𓅒', '𓂙', '𓁿', '𓈝', '𓆦', '𓋣'];
 
 
-router.get('/puz1_player1', function(req, res, next) {
+router.get('/puz1_player1', function (req, res, next) {
     res.render('puz1_player1');
 });
 
+const rightCode = "banana";
+router.post('/puz1_player1', function (req, res, next) {
+    console.log(req.body.codeGuess);
+    if (req.body.codeGuess == rightCode) {
+        res.redirect("/puzzle1/puz1_congrats");
+    } else {
+        console.log("Wrong code");
+        res.render("puz1_player1", {prevGuess: req.body.codeGuess});
+    }
+});
 
-router.get('/puz1_congrats', function(req, res, next) {
+router.get('/puz1_congrats', function (req, res, next) {
     res.render('puz1_congrats');
 });
 
-const rightCode = "banana";
-router.post('/puz1_player1', function(req, res, next) {
-    console.log(req.body.codeGuess);
-    if(req.body.codeGuess == rightCode){
-        res.redirect("/puzzle1/puz1_congrats");
-    }
-    else{
-        console.log("Wrong code");
-        res.render("puz1_player1", { prevGuess: req.body.codeGuess });
-    }
-});
-
-router.get('/puz1_player2', function(req, res, next) {
-    res.render('puz1_player2', {norm_alphabet: alphabet}, {code: code_alphabet});
+router.get('/puz1_player2', function (req, res, next) {
+    res.render('puz1_player2', {norm: alphabet, code: code_alphabet});
 });
 
 module.exports = router;

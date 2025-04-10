@@ -19,6 +19,8 @@
 <script>
 
     let table = document.getElementById("dictionaryTable");
+    const alphabet = <%- JSON.stringify(norm) %>;
+    let code_alphabet = <%- JSON.stringify(code) %>;
 
     let row_normal1 = table.insertRow(0);
     row_normal1.classList.add("norm");

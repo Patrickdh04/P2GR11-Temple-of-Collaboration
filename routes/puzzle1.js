@@ -6,6 +6,21 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '𓏞', '𓅾', '𓃂', '𓂯', '𓉩',
     '𓀼', '𓃩', '𓅷', '𓁲', '𓄰', '𓈣', 'ඞ', '𓂻', '𓅒', '𓂙', '𓁿', '𓈝', '𓆦', '𓋣'];
 
+code_alphabet = randomiseCodeAlphabet(code_alphabet);
+//[code_norm, code_symbol] = randomiseCode(alphabet, code_alphabet);
+
+function randomiseCodeAlphabet(code_alphabet){
+    for (let i = 0; i < code_alphabet.length; i++){
+        const j = Math.floor(Math.random() * i + 1);
+        [code_alphabet[i], code_alphabet[j]] = [code_alphabet[j], code_alphabet[i]];
+    }
+    console.log(code_alphabet);
+    return code_alphabet;
+}
+
+//function randomiseCode
+
+
 
 router.get('/puz1_player1', function (req, res, next) {
     res.render('puz1_player1');

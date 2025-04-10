@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-yellow-500 text-white flex flex-col items-center h-screen">
-<h1 class="text-4xl mb-4">Manual</h1>
-<p class="text-lg max-w-md text-center">Welcome, Player 2!</p>
-<table id="header">
-    <tr>
-        <th class="tableHeader">Hieroglyph dictionary</th>
-    </tr>
-</table>
-<table id="dictionaryTable" class="dictionary"></table>
+<body style="background-color: #B0903D;" class="text-white h-screen">
+
+<h1 class="text-4xl mt-6 ml-6 bg-yellow-400 text-black px-6 py-2 rounded shadow-md inline-block">
+    Manual
+</h1>
+
+
+
+<div class="flex flex-col items-center">
+    <table id="header" class="mb-4">
+        <tr>
+            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Hieroglyph Dictionary</th>
+        </tr>
+    </table>
+
+    <table id="dictionaryTable" class="dictionary"></table>
+</div>
+
 <script>
 
     let table = document.getElementById("dictionaryTable");

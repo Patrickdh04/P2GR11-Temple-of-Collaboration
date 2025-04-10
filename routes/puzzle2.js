@@ -16,7 +16,7 @@ function shuffle(array) {
     }
     return array;
 }
-
+//Test
 shuffle(ropeColor);
 console.log(ropeColor);
 

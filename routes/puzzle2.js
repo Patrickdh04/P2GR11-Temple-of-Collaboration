@@ -18,6 +18,5 @@ function shuffle(array) {
 }
 
 shuffle(ropeColor);
-console.log(ropeColor);
 
 module.exports = router;

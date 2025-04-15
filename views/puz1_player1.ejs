@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Player 1</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body class="bg-blue-900 flex items-center justify-center h-screen">
 <br/>
 
 <div class="text-center space-y-4">
     <h1 class="text-white text-4xl">Welcome, Player 1!</h1>
+    <br>
+    <h2 class="text-white text-2xl"><%= locals.code_symbol %></h2>
     <form action="/puzzle1/puz1_player1" method="POST">
         <input
                 type="text"
@@ -21,7 +24,13 @@
         <button type="submit">Submit</button>
     </form>
     <br>
-    New line
+    <h2 class="wrong-password text-2xl" id="wrongPass"></h2>
+    <script>
+        let wrongPassword = <%- JSON.stringify(wrongPassword) %>;
+        if (wrongPassword === true) {
+            document.getElementById("wrongPass").innerHTML = "Wrong password!";
+        }
+    </script>
 </div>
 
 </body>

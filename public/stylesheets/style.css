@@ -8,11 +8,9 @@ table, th, td {
     border: 3px solid black;
     color: black;
 }
-
 .norm {
     background-color: #B15A29;
 }
-
 .code {
     background-color: #DED18D;
 }
@@ -27,10 +25,6 @@ table, th, td {
     font-size: 40px;
     text-align: center;
     width: 80%;
-}
-
-.wrong-password {
-    color: red;
 }
 
 a {

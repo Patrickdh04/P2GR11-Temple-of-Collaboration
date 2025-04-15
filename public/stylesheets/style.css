@@ -5,16 +5,16 @@ body {
 
 table, th, td {
     table-layout: fixed;
-    border: 3px solid white;
-    color: white;
+    border: 3px solid black;
+    color: black;
 }
 
 .norm {
-    background-color: #1C4593;
+    background-color: #B15A29;
 }
 
 .code {
-    background-color: cadetblue;
+    background-color: #DED18D;
 }
 
 .tableHeader {

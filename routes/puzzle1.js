@@ -14,11 +14,11 @@ console.log("Code norm: " + code_norm + " Code symbol: " + code_symbol);
 function randomiseCode(alphabet, code_alphabet) {
     const code_length = 5;
     let code_norm = "";
-    let code_symbol = "";
+    let code_symbol = [];
     for (let i = 0; i < code_length; i++) {
         let character = Math.floor(Math.random() * alphabet.length);
         code_norm += alphabet[character];
-        code_symbol += code_alphabet[character];
+        code_symbol.push (code_alphabet[character]);
     }
     return [code_norm, code_symbol];
 }

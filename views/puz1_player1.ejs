@@ -7,13 +7,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body class="bg-blue-900 flex items-center justify-center h-screen">
+<body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
 <br/>
 
 <div class="text-center space-y-4">
-    <h1 class="text-white text-4xl">Welcome, Player 1!</h1>
+    <h1 class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
+        Can you decipher the secret code?
+    </h1>
     <br>
-    <h2 class="text-white text-2xl"><%= locals.code_symbol %></h2>
+
+
+    <table class="mx-auto border-black text-black text-5xl">
+        <tr id="tableRow"></tr>
+    </table>
+
+    <script>
+        const row = document.getElementById('tableRow');
+        const hieroglyph = <%- JSON.stringify(locals.code_symbol) %>;
+
+        for (let i = 0; i < hieroglyph.length; i++) {
+            const cell = row.insertCell();
+            cell.innerText = hieroglyph[i];
+            cell.className = "bg-yellow-400 text-black text-5xl px-20 py-2 rounded";
+        }
+    </script>
+
+
+
+
+
     <form action="/puzzle1/puz1_player1" method="POST">
         <input
                 type="text"

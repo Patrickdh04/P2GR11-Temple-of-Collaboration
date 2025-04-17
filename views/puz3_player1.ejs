@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>puz3_player1</title>
+</head>
+<body>
+<h1></h1>
+
+<button type="submit"id="button1"> GREEN </button>
+<button type="submit"id="button2"> RED </button>
+<button type="submit"id="button3"> BLUE </button>
+<button type="submit"id="button4"> YELLOW </button>
+<button type="submit"id="button5"> PURPLE </button>
+<button type="submit"id="button6"> ORANGE </button>
+
+
+</body>
+
+</html>
+<script>
+    let buttons = [button1, button2, button3, button4, button5, button6];
+     button1 = document.getElementById("button1");
+     button2 = document.getElementById("button2");
+     button3 = document.getElementById("button3");
+     button4 = document.getElementById("button4");
+     button5 = document.getElementById("button5");
+     button6 = document.getElementById("button6");
+    const buttonColor = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "hotpink", "lime", "cyan", "brown", "grey"];
+    let randomNumbers = <%- JSON.stringify(arrayOfNumbers) %>;
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = buttonColor[randomNumbers[i]];
+    }
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.color = buttonColor[randomNumbers[i+buttons.length]];
+    }
+</script>

@@ -3,13 +3,12 @@ const router = express.Router();
 
 let arrayOfNumbers = [];
 let amountOfNumbers = 6;
-let amountOfColors = 11;
 for (let i = 0; i < amountOfNumbers; i++) {
-    arrayOfNumbers[i] = Math.floor(Math.random() * amountOfColors);
+    arrayOfNumbers[i] = Math.floor(Math.random() * arrayOfNumbers.length);
 }
-let arrayBackgroundColor=["#EE2A11","#11D5EE","#7F05CC", "#51CC05","#F9D706","#0628F9","#00FF41","#FF00BE", "#861CE3", "#E3861C", "#ff8c00", "#00FF00"];
-let arrayFontColor=["#11D5EE", "#EE2A11","#51CC05","#7F05CC","#0628F9","#F9D706","#FF00BE","#00FF41", "#E3861C", "#861CE3", "#00FF00", "#ff8c00"  ];
-let arrayFontText=["GREEN","PURPLE"];
+let arrayBackgroundColor=["#2103FC", "#FC2103", "#03FC21",    "#D5792A","#EED911","#DA0AF5",    "#F708A2","#F87107","#877878",    "#00F3FF","#EB80F9","#1CE337",    "#D3AF37","#D7D7D7", "#D47E30"];
+let arrayFontColor=["#03FC21","#2103FC","#FC2103",    "#EED911","#DA0AF5","#D5792A",    "#F87107","#877878","#F708A2",    "#EB80F9","#1CE337","#00F3FF",    "#D7D7D7", "#D47E30","#D3AF37"];
+let arrayFontText=["RED","GREEN","BLUE",    "BROWN","YELLOW","PURPLE",    "PINK","ORANGE","GREY",   "CYAN","LAVENDER","LIME GREEN",   "BRONZE","GOLD","SILVER"];
 
 router.get('/puz3_player1', function (req, res, next) {
     res.render('puz3_player1', {arrayOfNumbers: arrayOfNumbers});

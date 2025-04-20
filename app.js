@@ -41,11 +41,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+/* Hvis man ikke kan få nodemon command - npm run dev, til at virke
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
+*/
 module.exports = app;

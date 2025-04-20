@@ -4,8 +4,9 @@ const {shuffleArray} = require('./functions');
 
 const ropeColor = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "Cyan", "Black"];
 const rules = ["First", "Striped", "Half white", "Not straight", "Longest"];
-const ropes = [5];
+const ropes = [];
 shuffleArray(ropeColor);
+shuffleArray(rules);
 console.log(ropeColor);
 console.log(rules);
 
@@ -14,8 +15,15 @@ for (let i = 0; i < 5; i++){
         color: ropeColor[i], rule: rules[i]
     }) ;
 }
+//console.log(ropes); For testing unshift
 
-console.log(ropes[1]);
+//Move the object with the property "First" to index 0
+let firstRopeIndex = ropes.findIndex(rope => rope.rule === "First");
+if (0 !== firstRopeIndex) {
+    ropes.unshift(ropes.splice(firstRopeIndex, 1)[0]);
+}
+
+console.log(ropes);
 
 
 

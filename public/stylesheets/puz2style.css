@@ -1,0 +1,70 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url('/images/bgpuz2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+.game-container {
+    background-image: url('/images/bgpuz2.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  .hanger-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hanger {
+   width: 1400px; 
+   height: 200px; 
+   object-fit: fill; 
+   display: block;
+   margin-bottom: -125px; 
+   image-rendering: pixelated;
+  }
+
+  .rope-container {
+    display: flex;
+    flex-direction: row;
+    gap: 4px; 
+    padding: 0px;
+    background: none;
+  }
+
+  .rope-container img {
+    width: 150px; 
+    height: 480px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .rope-container img:hover {
+    transform: scale(1.05);
+  }
+
+  .game-title {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  z-index: 10;
+  }

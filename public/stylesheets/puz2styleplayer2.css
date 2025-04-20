@@ -1,0 +1,31 @@
+/*Manual*/
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.book-container {
+    position: relative;
+    width: 900px;
+    max-width: 100% ;
+}
+
+.book-image {
+    width: 200%;
+    height: auto;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    width: 30%;
+    color: #3b2f1c;
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}

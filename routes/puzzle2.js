@@ -26,13 +26,12 @@ if (0 !== firstRopeIndex) {
 console.log(ropes);
 
 
-
 router.get('/puz2_player1', function (req, res, next) {
-    res.render('puz2_player1');
+    res.render('puz2_player1', {ropes});
 });
 
 router.get('/puz2_player2', function (req, res, next) {
-    res.render('puz2_player2');
+    res.render('puz2_player2', {ropes});
 });
 
 module.exports = router;

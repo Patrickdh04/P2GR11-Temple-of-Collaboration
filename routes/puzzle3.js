@@ -31,8 +31,8 @@ function randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText) {
     return result;
 }
 let arrayBackgroundColor = ["#2103FC", "#FC2103", "#03FC21", "#D5792A", "#EED911", "#DA0AF5", "#F708A2", "#F87107", "#877878"];
-let arrayFontColor = ["#03FC21", "#2103FC", "#FC2103", "#EED911", "#DA0AF5", "#D5792A", "#F87107", "#877878", "#F708A2"];
-let arrayFontText = ["RED", "GREEN", "ORANGE", "GREY", "BLUE", "PINK", "YELLOW", "PURPLE", "BROWN"];
+let arrayFontColor =       ["#03FC21", "#2103FC", "#FC2103", "#EED911", "#DA0AF5", "#D5792A", "#F87107", "#877878", "#F708A2"];
+let arrayFontText =        ["RED",     "GREEN",   "BLUE",    "GREY",    "ORANGE",  "PINK",    "YELLOW",  "PURPLE",  "BROWN"];
 
 let arrayOfColors = randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText);
 

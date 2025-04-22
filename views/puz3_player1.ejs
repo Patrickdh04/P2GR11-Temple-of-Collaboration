@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>puz3_player1</title>
+    <link rel="stylesheet" href="/stylesheets/puz3style.css">
 </head>
 <body>
-<h1></h1>
-
-<% arrayOfColors.forEach(color => { %>
-    <div style="background-color:<%= color.backgroundColor %>; color:<%= color.fontColor %>; padding: 10px; margin: 5px;">
-        <%= color.fontText %>
-
+<button class = "button" type="submit" id="button1" > </button>
+<button class = "button" type="submit" id="button2"> </button>
+<button class = "button" type="submit" id="button3"> </button>
+<button class = "button" type="submit" id="button4"> </button>
+<button class = "button" type="submit" id="button5"> </button>
+<button class = "button" type="submit" id="button6"> </button>
 </body>
 
 </html>
 <script>
 
     let buttons = [button1, button2, button3, button4, button5, button6];
-     button1 = document.getElementById("button1");
-     button2 = document.getElementById("button2");
-     button3 = document.getElementById("button3");
-     button4 = document.getElementById("button4");
-     button5 = document.getElementById("button5");
-     button6 = document.getElementById("button6");
-    const buttonColor = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "hotpink", "lime", "cyan", "brown", "grey"];
-    let randomNumbers = <%- JSON.stringify(arrayOfNumbers) %>;
+    button1 = document.getElementById("button1");
+    button2 = document.getElementById("button2");
+    button3 = document.getElementById("button3");
+    button4 = document.getElementById("button4");
+    button5 = document.getElementById("button5");
+    button6 = document.getElementById("button6");
+
+    let randomColors = <%- JSON.stringify(arrayOfColors) %>;
+
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.backgroundColor = buttonColor[randomNumbers[i]];
-    }
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.color = buttonColor[randomNumbers[i+buttons.length]];
+        buttons[i].style.color = randomColors[i].fontColor;
+        buttons[i].style.backgroundColor = randomColors[i].backgroundColor;
+        buttons[i].innerHTML = randomColors[i].fontText;
     }
 </script>

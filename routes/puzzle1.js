@@ -29,7 +29,7 @@ router.get('/puz1_player1', function (req, res, next) {
 
 router.post('/puz1_player1', function (req, res, next) {
     console.log(req.body.codeGuess);
-    if (req.body.codeGuess === code_norm) {
+    if (req.body.codeGuess.toUpperCase() === code_norm) {
         res.redirect("/puzzle1/puz1_congrats");
     } else {
         console.log('Wrong code');

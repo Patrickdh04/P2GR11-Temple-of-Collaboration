@@ -10,15 +10,21 @@ let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '�
 code_alphabet = shuffleArray(code_alphabet);
 let [code_norm, code_symbol] = randomiseCode(alphabet, code_alphabet);
 console.log("Code norm: " + code_norm + " Code symbol: " + code_symbol);
+console.log("code_alphabet: " + code_alphabet + "alphabet: " + alphabet);
 
 function randomiseCode(alphabet, code_alphabet) {
+    let temp_alphabet = alphabet.slice();
+    let temp_code_alphabet = code_alphabet.slice();
     const code_length = 5;
     let code_norm = "";
     let code_symbol = [];
+
     for (let i = 0; i < code_length; i++) {
-        let character = Math.floor(Math.random() * alphabet.length);
-        code_norm += alphabet[character];
-        code_symbol.push (code_alphabet[character]);
+        let character = Math.floor(Math.random() * temp_alphabet.length);
+        code_norm += temp_alphabet[character];
+        code_symbol.push(temp_code_alphabet[character]);
+        temp_code_alphabet.splice(character, 1);
+        temp_alphabet.splice(character, 1);
     }
     return [code_norm, code_symbol];
 }

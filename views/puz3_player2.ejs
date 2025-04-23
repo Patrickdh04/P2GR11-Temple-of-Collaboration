@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>puz3_player2</title>
-</head>
-<body>
-<h1></h1>
-<div>
+    <link rel="stylesheet" href="/stylesheets/puz3style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-</div>
+</head>
+<body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
+
+<table id = "tableColor" class = "colorTable">
+
+</table>
+
+<script>
+    let table = document.getElementById('tableColor');
+    let tableSize = 10;
+
+    for (let i = 0; i < tableSize; i++) {
+        let row = table.insertRow(i);
+
+        for (let j = 0; j < tableSize; j++) {
+            row.insertCell(j).style.backgroundColor = "white";
+        }
+    }
+
+</script>
 
 </body>
 </html>

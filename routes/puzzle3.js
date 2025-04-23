@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+//player1 logic
 
 let amountOfButtons = 6;
 
@@ -33,10 +34,21 @@ function randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText) {
 let arrayBackgroundColor = ["#2103FC", "#FC2103", "#03FC21", "#D5792A", "#EED911", "#DA0AF5", "#F708A2", "#F87107", "#877878"];
 let arrayFontColor =       ["#03FC21", "#2103FC", "#FC2103", "#EED911", "#DA0AF5", "#D5792A", "#F87107", "#877878", "#F708A2"];
 let arrayFontText =        ["RED",     "GREEN",   "BLUE",    "GREY",    "ORANGE",  "PINK",    "YELLOW",  "PURPLE",  "BROWN"];
-
 let arrayOfColors = randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText);
+
+
+
 
 router.get('/puz3_player1', function (req, res, next) {
     res.render('puz3_player1', {arrayOfColors: arrayOfColors});
 });
+
+//player2 logic
+
+let cellColor = arrayFontColor.slice(0, 3);
+
+router.get('/puz3_player2', function (req, res, next) {
+    res.render('puz3_player2');
+});
+
 module.exports = router;

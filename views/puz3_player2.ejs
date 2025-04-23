@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>puz3_player2</title>
-</head>
-<body>
-<h1></h1>
-<div>
+    <link rel="stylesheet" href="/stylesheets/puz3style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-</div>
+</head>
+<body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
+
+<table id="tableColor" class="colorTable">
+
+</table>
+
+<script>
+    let table = document.getElementById('tableColor');
+    let tableSize = 10;
+
+    //Get colors and distribution from puzzle3.js
+    let dynamicColorDistribution = <%- JSON.stringify(locals.colorDistribution) %>;
+    let originalColorDistribution = dynamicColorDistribution.slice();
+    let cellColors = <%- JSON.stringify(locals.cellColors) %>;
+
+    for (let i = 0; i < tableSize; i++) {
+        let row = table.insertRow(i);
+
+        for (let j = 0; j < tableSize; j++) {
+            let randIndex = Math.floor(Math.random() * dynamicColorDistribution.length);
+            switch (dynamicColorDistribution[randIndex]) {
+                case originalColorDistribution[0]:
+                    row.insertCell(j).style.backgroundColor = cellColors[0];
+                    break;
+                case originalColorDistribution[1]:
+                    row.insertCell(j).style.backgroundColor = cellColors[1];
+                    break;
+                case originalColorDistribution[2]:
+                    row.insertCell(j).style.backgroundColor = cellColors[2];
+                    break;
+                case originalColorDistribution[3]:
+                    row.insertCell(j).style.backgroundColor = cellColors[3];
+                    break;
+            }
+            dynamicColorDistribution[randIndex]--;
+            if (dynamicColorDistribution[randIndex] === 0) {
+                dynamicColorDistribution[randIndex].splice(randIndex, 1);
+            }
+
+        }
+    }
+
+</script>
 
 </body>
 </html>

@@ -9,45 +9,40 @@
 </head>
 <body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
 
-<table id="tableColor" class="colorTable">
-
-</table>
+<table id="tableColor" class="colorTable"></table>
+<br>
+<table id="tableAnswers" class="answerTable"></table>
 
 <script>
     let table = document.getElementById('tableColor');
     let tableSize = 10;
 
-    //Get colors and distribution from puzzle3.js
-    let dynamicColorDistribution = <%- JSON.stringify(locals.colorDistribution) %>;
-    let originalColorDistribution = dynamicColorDistribution.slice();
+    //Get colors and colorPool from puzzle3.js
+    let colorPool = <%- JSON.stringify(locals.colorPool) %>;
     let cellColors = <%- JSON.stringify(locals.cellColors) %>;
+    let colorIndex = 0;
 
     for (let i = 0; i < tableSize; i++) {
         let row = table.insertRow(i);
-
         for (let j = 0; j < tableSize; j++) {
-            let randIndex = Math.floor(Math.random() * dynamicColorDistribution.length);
-            switch (dynamicColorDistribution[randIndex]) {
-                case originalColorDistribution[0]:
-                    row.insertCell(j).style.backgroundColor = cellColors[0];
-                    break;
-                case originalColorDistribution[1]:
-                    row.insertCell(j).style.backgroundColor = cellColors[1];
-                    break;
-                case originalColorDistribution[2]:
-                    row.insertCell(j).style.backgroundColor = cellColors[2];
-                    break;
-                case originalColorDistribution[3]:
-                    row.insertCell(j).style.backgroundColor = cellColors[3];
-                    break;
-            }
-            dynamicColorDistribution[randIndex]--;
-            if (dynamicColorDistribution[randIndex] === 0) {
-                dynamicColorDistribution[randIndex].splice(randIndex, 1);
-            }
-
+            row.insertCell(-1).style.backgroundColor = cellColors[colorPool[colorIndex]];
+            colorIndex++;
         }
     }
+
+    let tableAnswers = document.getElementById('tableAnswers');
+    let rowColors = tableAnswers.insertRow(0);
+    for (let i = 0; i < cellColors.length; i++) {
+        rowColors.insertCell(-1).style.backgroundColor = cellColors[i];
+    }
+
+    let rowAnswers = tableAnswers.insertRow(1);
+    let possibleAnswers = <%- JSON.stringify(locals.possibleAnswers) %>;
+    for (let i = 0; i < possibleAnswers.length; i++) {
+        rowAnswers.insertCell(-1).innerHTML = possibleAnswers[i];
+    }
+    console.log(possibleAnswers);
+
 
 </script>
 

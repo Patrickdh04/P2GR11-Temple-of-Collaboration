@@ -7,7 +7,7 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '𓏞', '𓅾', '𓃂', '𓂯', '𓉩',
     '𓀼', '𓃩', '𓅷', '𓁲', '𓄰', '𓈣', 'ඞ', '𓂻', '𓅒', '𓂙', '𓁿', '𓈝', '𓆦', '𓋣'];
 
-code_alphabet = shuffleArray(code_alphabet);
+shuffleArray(code_alphabet);
 let [code_norm, code_symbol] = randomiseCode(alphabet, code_alphabet);
 console.log("Code norm: " + code_norm + " Code symbol: " + code_symbol);
 console.log("code_alphabet: " + code_alphabet + "alphabet: " + alphabet);

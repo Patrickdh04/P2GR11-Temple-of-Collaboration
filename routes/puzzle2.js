@@ -3,7 +3,14 @@ var router = express.Router();
 const {shuffleArray} = require('./functions');
 
 const ropeColor = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "Cyan", "Black"];
-const rules = ["First", "Striped", "Half white", "Not straight", "Longest"];
+const rules = ["First", "Striped", "Half white", "Wavy", "Distorted"];
+const ruleToFolder ={
+    "First": "solid",
+    "Striped": "striped",
+    "Half white": "half_white",
+    "Wavy": "wavy",
+    "Distorted": "distorted"
+};
 const allRopes = [];
 shuffleArray(ropeColor);
 shuffleArray(rules);
@@ -14,7 +21,7 @@ let test = 0;
 // Building rope objects
 for (let i = 0; i < 5; i++){
     allRopes.push ({
-        color: ropeColor[i], rule: rules[i]
+        color: ropeColor[i], rule: rules[i], folder: ruleToFolder[rules[i]]
     }) ;
 }
 

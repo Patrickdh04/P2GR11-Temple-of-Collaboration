@@ -14,7 +14,7 @@
       <div class="rope-container">
         <% displayRopes.forEach((rope, index) => { %>
           <div class="rope-wrapper">
-            <img onclick="ropeKey(<%= index %>)" src="/images/<%= rope.color.toLowerCase() %>rope.png" alt="<%= rope.color %> Rope">
+            <img onclick="ropeKey(<%= index %>)" src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.color.toLowerCase() %>rope.png" alt="<%= rope.color %> Rope">
             <div class="rope-label"><%= rope.color %> - <%= rope.rule %></div>
           </div>
         <% }) %>

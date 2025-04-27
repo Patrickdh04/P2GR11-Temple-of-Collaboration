@@ -34,7 +34,7 @@ html, body {
    height: 200px; 
    object-fit: fill; 
    display: block;
-   margin-bottom: -125px; 
+   margin-bottom: -310px; 
    image-rendering: pixelated;
   }
 
@@ -48,7 +48,7 @@ html, body {
 
   .rope-container img {
     width: 150px; 
-    height: 480px;
+    height: 900px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -57,7 +57,7 @@ html, body {
   .rope-container img:hover {
     transform: scale(1.05);
   }
-
+  
   .game-title {
   position: fixed;
   bottom: 10px;

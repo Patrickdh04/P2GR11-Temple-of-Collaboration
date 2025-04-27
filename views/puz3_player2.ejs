@@ -9,47 +9,52 @@
 </head>
 <body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
 
-<table id="tableColor" class="colorTable">
+<div class="text-center space-y-4">
+    <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
+        Which color appears the <span id="maxOrMin" class="emphasis"></span>?</h1>
+    <p>Tell Player 1 the corresponding color from the second row of the table below.</p>
+    <table id="tableColor" class="colorTable mx-auto"></table>
+    <br>
+    <table id="tableAnswers" class="answerTable mx-auto"></table>
+</div>
+    <script>
+        let table = document.getElementById('tableColor');
+        let tableSize = 10;
 
-</table>
+        //Get colors and colorPool from puzzle3.js
+        let colorPool = <%- JSON.stringify(colorPool) %>;
+        let cellColors = <%- JSON.stringify(cellColors) %>;
+        let colorIndex = 0;
 
-<script>
-    let table = document.getElementById('tableColor');
-    let tableSize = 10;
-
-    //Get colors and distribution from puzzle3.js
-    let dynamicColorDistribution = <%- JSON.stringify(locals.colorDistribution) %>;
-    let originalColorDistribution = dynamicColorDistribution.slice();
-    let cellColors = <%- JSON.stringify(locals.cellColors) %>;
-
-    for (let i = 0; i < tableSize; i++) {
-        let row = table.insertRow(i);
-
-        for (let j = 0; j < tableSize; j++) {
-            let randIndex = Math.floor(Math.random() * dynamicColorDistribution.length);
-            switch (dynamicColorDistribution[randIndex]) {
-                case originalColorDistribution[0]:
-                    row.insertCell(j).style.backgroundColor = cellColors[0];
-                    break;
-                case originalColorDistribution[1]:
-                    row.insertCell(j).style.backgroundColor = cellColors[1];
-                    break;
-                case originalColorDistribution[2]:
-                    row.insertCell(j).style.backgroundColor = cellColors[2];
-                    break;
-                case originalColorDistribution[3]:
-                    row.insertCell(j).style.backgroundColor = cellColors[3];
-                    break;
+        for (let i = 0; i < tableSize; i++) {
+            let row = table.insertRow(i);
+            for (let j = 0; j < tableSize; j++) {
+                row.insertCell(-1).style.backgroundColor = cellColors[colorPool[colorIndex]];
+                colorIndex++;
             }
-            dynamicColorDistribution[randIndex]--;
-            if (dynamicColorDistribution[randIndex] === 0) {
-                dynamicColorDistribution[randIndex].splice(randIndex, 1);
-            }
-
         }
-    }
 
-</script>
+        let tableAnswers = document.getElementById('tableAnswers');
+        let rowColors = tableAnswers.insertRow(0);
+        for (let i = 0; i < cellColors.length; i++) {
+            rowColors.insertCell(-1).style.backgroundColor = cellColors[i];
+        }
 
+        let rowAnswers = tableAnswers.insertRow(1);
+        let possibleAnswers = <%- JSON.stringify(possibleAnswers) %>;
+        for (let i = 0; i < possibleAnswers.length; i++) {
+            rowAnswers.insertCell(-1).style.backgroundColor = possibleAnswers[i];
+        }
+        console.log(possibleAnswers);
+
+        let isMax = <%- JSON.stringify(isMax) %>;
+        let playerInfo = document.getElementById('maxOrMin');
+        if (isMax) {
+            playerInfo.innerHTML = "most";
+        } else {
+            playerInfo.innerHTML = "least";
+        }
+
+    </script>
 </body>
 </html>

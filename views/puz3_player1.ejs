@@ -6,15 +6,25 @@
     <link rel="stylesheet" href="/stylesheets/puz3style.css">
 </head>
 <body>
-<button class = "button" type="submit" id="button1" > </button>
-<button class = "button" type="submit" id="button2"> </button>
-<button class = "button" type="submit" id="button3"> </button>
-<button class = "button" type="submit" id="button4"> </button>
-<button class = "button" type="submit" id="button5"> </button>
-<button class = "button" type="submit" id="button6"> </button>
+<h2>Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br>
+    <span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is.
+</h2>
+<form action="/puzzle3/puz3_player1" method="post" id="buttonForm">
+    <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
+    <button onclick="checkColor(this)" type="button" id="button1"></button>
+    <button onclick="checkColor(this)" type="button" id="button2"></button>
+    <button onclick="checkColor(this)" type="button" id="button3"></button>
+    <button onclick="checkColor(this)" type="button" id="button4"></button>
+    <button onclick="checkColor(this)" type="button" id="button5"></button>
+    <button onclick="checkColor(this)" type="button" id="button6"></button>
+</form>
 </body>
 
 </html>
+<script src="https://www.w3schools.com/lib/w3color.js">
+    //In this tag we include a library made by w3schools with functions that allow us to change
+    //colors from rgb values to hex values, which we do in the checkColor() function.
+</script>
 <script>
 
     let buttons = [button1, button2, button3, button4, button5, button6];
@@ -31,5 +41,14 @@
         buttons[i].style.color = randomColors[i].fontColor;
         buttons[i].style.backgroundColor = randomColors[i].backgroundColor;
         buttons[i].innerHTML = randomColors[i].fontText;
+    }
+
+    //When a button is pressed, font color is saved, and then checked in puzzle3.js
+    function checkColor(button) {
+        //Here we use the toHexString() function from w3schools to make sure the
+        //font color is saved in the same format as it was originally assigned as,
+        //earlier in this script tag. This allows for correct comparisons on the server.
+        document.getElementById("fontColorOfButton").value = w3color(button.style.color).toHexString().toUpperCase();
+        document.getElementById("buttonForm").submit();
     }
 </script>

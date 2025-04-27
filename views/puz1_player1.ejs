@@ -30,15 +30,12 @@
             cell.className = "bg-yellow-400 text-black text-5xl px-20 py-2 rounded";
         }
     </script>
-
-
-
     <form action="/puzzle1/puz1_player1" method="POST">
         <input
                 style="text-transform: uppercase"
                 type="text"
                 name="codeGuess"
-                placeholder="Insert code here"
+                placeholder="Type code here"
                 value="<%= locals.prevGuess %>"
         />
         <button type="submit">Submit</button>

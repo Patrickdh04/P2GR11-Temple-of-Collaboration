@@ -31,9 +31,10 @@ function randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText) {
     }
     return result;
 }
+
 const arrayBackgroundColor = ["#0083FF", "#FC2103", "#03FC21", "#D5792A", "#EED911", "#CE00FF", "#F708A2", "#F87107", "#877878"];
-const arrayFontColor =       ["#03FC21", "#0083FF", "#FC2103", "#EED911", "#CE00FF", "#D5792A", "#F87107", "#877878", "#F708A2"];
-const arrayFontText =        ["RED",     "GREEN",   "BLUE",    "GREY",    "ORANGE",  "PINK",    "YELLOW",  "PURPLE",  "BROWN"];
+const arrayFontColor = ["#03FC21", "#0083FF", "#FC2103", "#EED911", "#CE00FF", "#D5792A", "#F87107", "#877878", "#F708A2"];
+const arrayFontText = ["RED", "GREEN", "BLUE", "GREY", "ORANGE", "PINK", "YELLOW", "PURPLE", "BROWN"];
 const arrayOfColors = randomColor(arrayBackgroundColor, arrayFontColor, arrayFontText);
 
 router.get('/puz3_player1', function (req, res, next) {
@@ -47,7 +48,7 @@ let cellColors = ["green", "red", "blue", "yellow"];
 const possibleDistributions = [25, 30, 25, 20];
 const colorDistribution = [];
 for (let i = 0; i < cellColors.length; i++) {
-    let  randIndex = Math.floor(Math.random() * possibleDistributions.length);
+    let randIndex = Math.floor(Math.random() * possibleDistributions.length);
     colorDistribution[i] = possibleDistributions[randIndex];
     possibleDistributions.splice(randIndex, 1);
 }
@@ -68,7 +69,7 @@ let amountOfPossibleAnswers = 4;
 const possibleAnswers = [];
 const player1Colors = arrayOfColors.slice();
 for (let i = 0; i < amountOfPossibleAnswers; i++) {
-    let  randIndex = Math.floor(Math.random() * player1Colors.length);
+    let randIndex = Math.floor(Math.random() * player1Colors.length);
     possibleAnswers.push(player1Colors[randIndex].fontColor);
     player1Colors.splice(randIndex, 1);
 }
@@ -79,7 +80,7 @@ let isMax = Math.random() > 0.5;
 let correctAnswer;
 if (isMax) {
     correctAnswer = colorDistribution.indexOf(30);
-} else{
+} else {
     correctAnswer = colorDistribution.indexOf(20);
 }
 //We swap the previous correct answer with the new index
@@ -89,7 +90,22 @@ if (isMax) {
 console.log(possibleAnswers);
 
 router.get('/puz3_player2', function (req, res, next) {
-    res.render('puz3_player2', {colorPool: colorPool, cellColors: cellColors, possibleAnswers: possibleAnswers});
+    res.render('puz3_player2', {
+        colorPool: colorPool,
+        cellColors: cellColors,
+        possibleAnswers: possibleAnswers,
+        isMax: isMax
+    });
+});
+
+router.post('/puz3_player1', function (req, res, next) {
+    console.log("Font color button: " + req.body.fontColorOfButton);
+    if (req.body.fontColorOfButton === correctColor) {
+        console.log("You got it right!");
+    } else{
+        console.log("You got it wrong!");
+    }
+    res.render('puz3_player1', {arrayOfColors: arrayOfColors});
 });
 
 module.exports = router;

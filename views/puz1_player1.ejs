@@ -9,28 +9,15 @@
 </head>
 <body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
 <br/>
-
 <div class="text-center space-y-4">
     <h1 class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
         Can you decipher the secret code?
     </h1>
     <br>
-
     <table class="mx-auto border-black text-black text-5xl">
         <tr id="tableRow"></tr>
     </table>
-
-    <script>
-        const row = document.getElementById('tableRow');
-        const hieroglyph = <%- JSON.stringify(locals.code_symbol) %>;
-
-        for (let i = 0; i < hieroglyph.length; i++) {
-            const cell = row.insertCell();
-            cell.innerText = hieroglyph[i];
-            cell.className = "bg-yellow-400 text-black text-5xl px-20 py-2 rounded";
-        }
-    </script>
-    <form action="/puzzle1/puz1_player1" method="POST">
+    <form id="inputForm" method="POST">
         <input
                 style="text-transform: uppercase"
                 type="text"
@@ -42,13 +29,42 @@
     </form>
     <br>
     <h2 class="wrong-password text-2xl" id="wrongPass"></h2>
-    <script>
-        let wrongPassword = <%- JSON.stringify(wrongPassword) %>;
-        if (wrongPassword === true) {
-            document.getElementById("wrongPass").innerHTML = "Wrong password!";
-        }
-    </script>
-</div>
 
+</div>
+<audio id="correctAudio">
+    <source src="/sounds/correct.mp3" type="audio/mpeg">
+</audio>
+<audio id="wrongAudio">
+    <source src="/sounds/wrong.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
+<script>
+    const row = document.getElementById('tableRow');
+    const hieroglyph = <%- JSON.stringify(locals.code_symbol) %>;
+
+    for (let i = 0; i < hieroglyph.length; i++) {
+        const cell = row.insertCell();
+        cell.innerText = hieroglyph[i];
+        cell.className = "bg-yellow-400 text-black text-5xl px-20 py-2 rounded";
+    }
+
+    let correctAudio = document.getElementById("correctAudio");
+    let wrongAudio = document.getElementById("wrongAudio");
+    //Check if last submit was correct, and play corresponding sound file
+    //If variable is null, meaning no input has been yet, we do not play an audio file
+    let wrongPassword = <%- JSON.stringify(wrongPassword) %>;
+    if (wrongPassword != null) {
+        if (wrongPassword === true) {
+            document.getElementById("wrongPass").innerHTML = "Wrong password!";
+            wrongAudio.volume = 0.5;
+            wrongAudio.play();
+        } else {
+            correctAudio.volume = 0.5;
+            correctAudio.play();
+            correctAudio.addEventListener("ended", () => {
+                document.getElementById("inputForm").submit()
+            });
+        }
+    }
+</script>

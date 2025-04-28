@@ -26,3 +26,9 @@ button {
 .emphasis{
     font-weight: bold;
 }
+
+.scoreBoard{
+    font-weight: bold;
+    background-color: #B15A29;
+    color: white;
+}

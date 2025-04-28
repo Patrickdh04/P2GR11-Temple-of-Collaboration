@@ -28,24 +28,25 @@ function randomiseCode(alphabet, code_alphabet) {
     }
     return [code_norm, code_symbol];
 }
-let wrongPassword = false;
+let wrongPassword = null;
 router.get('/puz1_player1', function (req, res, next) {
     res.render('puz1_player1', {code_symbol: code_symbol, wrongPassword: wrongPassword});
 });
 
 router.post('/puz1_player1', function (req, res, next) {
     console.log(req.body.codeGuess);
-    if (req.body.codeGuess.toUpperCase() === code_norm) {
-        res.redirect("/puzzle1/puz1_congrats");
+    if (wrongPassword === false){
+        res.redirect("../puzzle2/puz2_player1");
+    }
+    else if (req.body.codeGuess.toUpperCase() === code_norm) {
+        wrongPassword = false;
+        res.render('puz1_player1', {code_symbol: code_symbol, prevGuess: req.body.codeGuess, wrongPassword: wrongPassword});
+
     } else {
         console.log('Wrong code');
         wrongPassword = true;
         res.render('puz1_player1', {code_symbol: code_symbol, prevGuess: req.body.codeGuess, wrongPassword: wrongPassword});
     }
-});
-
-router.get('/puz1_congrats', function (req, res, next) {
-    res.render('puz1_congrats');
 });
 
 router.get('/puz1_player2', function (req, res, next) {

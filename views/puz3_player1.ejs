@@ -7,9 +7,11 @@
 </head>
 <body>
 <h2>Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br>
-    <span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is.
+    <span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br>
+    Get <%= timesToClear %> correct in a row to win.
 </h2>
-<form action="/puzzle3/puz3_player1" method="post" id="buttonForm">
+<h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
+<form method="post" id="buttonForm">
     <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
     <button onclick="checkColor(this)" type="button" id="button1"></button>
     <button onclick="checkColor(this)" type="button" id="button2"></button>
@@ -18,6 +20,12 @@
     <button onclick="checkColor(this)" type="button" id="button5"></button>
     <button onclick="checkColor(this)" type="button" id="button6"></button>
 </form>
+<audio id="correctAudio">
+    <source src="/sounds/correct.mp3" type="audio/mpeg">
+</audio>
+<audio id="wrongAudio">
+    <source src="/sounds/wrong.mp3" type="audio/mpeg">
+</audio>
 </body>
 
 </html>
@@ -26,6 +34,21 @@
     //colors from rgb values to hex values, which we do in the checkColor() function.
 </script>
 <script>
+    let correctAudio = document.getElementById("correctAudio");
+    let wrongAudio = document.getElementById("wrongAudio");
+    //Check if last button press was correct, and play corresponding sound file
+    //If variable is null, meaning no button has been pressed yet, we do not play an audio file
+    let correctAnswer = <%- JSON.stringify(correctAnswer) %>;
+    if (correctAnswer != null) {
+        if (correctAnswer) {
+            correctAudio.volume = 0.5;
+            correctAudio.play();
+        } else {
+            wrongAudio.volume = 0.5;
+            wrongAudio.play();
+        }
+    }
+
 
     let buttons = [button1, button2, button3, button4, button5, button6];
     button1 = document.getElementById("button1");

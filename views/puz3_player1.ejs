@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <title>puz3_player1</title>
     <link rel="stylesheet" href="/stylesheets/puz3style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-<h2>Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br>
-    <span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br>
+<body style="background-color: #B0903D;" class="min-h-screen flex flex-col items-center justify-start py-10">
+
+<div class="text-center space-y-2">
+    <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
+        Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br> </h1>
+    <h2><span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br></h2>
+    <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
     Get <%= timesToClear %> correct in a row to win.
-</h2>
-<h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
-<form method="post" id="buttonForm">
-    <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
-    <button onclick="checkColor(this)" type="button" id="button1"></button>
-    <button onclick="checkColor(this)" type="button" id="button2"></button>
-    <button onclick="checkColor(this)" type="button" id="button3"></button>
-    <button onclick="checkColor(this)" type="button" id="button4"></button>
-    <button onclick="checkColor(this)" type="button" id="button5"></button>
-    <button onclick="checkColor(this)" type="button" id="button6"></button>
-</form>
+
+    <form method="post" id="buttonForm">
+        <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button1"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button2"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button3"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button4"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button5"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button6"></button>
+    </form>
+</div>
+
+
+
 <audio id="correctAudio">
     <source src="/sounds/correct.mp3" type="audio/mpeg">
 </audio>

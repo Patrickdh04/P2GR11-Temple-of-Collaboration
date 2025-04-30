@@ -5,6 +5,7 @@
     <title>puz3_player2</title>
     <link rel="stylesheet" href="/stylesheets/puz3style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
 </head>
 <body style="background-color: #B0903D;" class="min-h-screen flex flex-col items-center justify-start py-10">
@@ -29,10 +30,7 @@
         <table id="tableAnswers" class="answerTable mx-auto"></table>
     </div>
 </div>
-<br>
-
-
-
+<form method="post" id="submitForm"></form>
 <script>
     let table = document.getElementById('tableColor');
     let tableSize = 10;
@@ -69,6 +67,20 @@
         playerInfo.innerHTML = "most";
     } else {
         playerInfo.innerHTML = "least";
+    }
+
+    //Refresh page when player 1 presses a button
+    const socket = io();
+    socket.on('refreshPage', () => {
+        location.reload();
+    });
+
+    //When the correct amount of times the puzzle is clear in a row, submit a form to go to congrats.ejs
+    let timesCleared = <%- JSON.stringify(timesCleared) %>;
+    let timeToClear = <%- JSON.stringify(timesToClear) %>;
+    let submitForm = document.getElementById('submitForm');
+    if (timesCleared >= timeToClear) {
+        submitForm.submit();
     }
 
 </script>

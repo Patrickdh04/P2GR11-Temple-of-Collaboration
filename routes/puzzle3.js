@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {startNewPuzzle3} = require('./functions');
+const  {startNewPuzzle3}= require('./functions');
 
 //Initialise all variables for puzzle 3
 let [arrayOfColors, colorPool, cellColors, possibleAnswers, isMax, correctColor]
@@ -60,7 +60,7 @@ router.post('/puz3_player1', function (req, res, next) {
 });
 
 router.post('/puz3_player2', function (req, res, next) {
-    if (timesCleared === timesToClear) {
+    if (timesCleared >= timesToClear) {
         res.redirect('congrats');
     }
 })

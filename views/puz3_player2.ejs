@@ -32,6 +32,13 @@
 </div>
 <form method="post" id="submitForm"></form>
 <script>
+    //Connect to the socket. This allows us to listen for activity from player 1
+    const socket = io();
+    //Refresh page when player 1 presses a button
+    socket.on('refreshPage', () => {
+        location.reload();
+    });
+
     let table = document.getElementById('tableColor');
     let tableSize = 10;
 
@@ -68,12 +75,6 @@
     } else {
         playerInfo.innerHTML = "least";
     }
-
-    //Refresh page when player 1 presses a button
-    const socket = io();
-    socket.on('refreshPage', () => {
-        location.reload();
-    });
 
     //When the correct amount of times the puzzle is clear in a row, submit a form to go to congrats.ejs
     let timesCleared = <%- JSON.stringify(timesCleared) %>;

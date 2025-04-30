@@ -6,6 +6,7 @@
     <title>Player 2 Manual</title>
     <link rel="stylesheet" href="/stylesheets/puz1style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body style="background-color: #B0903D">
 
@@ -13,23 +14,34 @@
     Manual
 </h1>
 
-
-
 <div class="flex flex-col items-center">
     <table id="header" class="mb-4">
         <tr>
-            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Hieroglyph Dictionary</th>
+            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Symbol Dictionary</th>
         </tr>
     </table>
-
     <table id="dictionaryTable" class="dictionary"></table>
 </div>
+<form method="post" id="submitForm"></form>
 
 <script>
+    //Connect to the socket. This allows us to listen for activity from player 1
+    const socket = io();
+    //Refresh page when player 1 submits correct answer
+    socket.on('refreshPage', () => {
+        location.reload();
+    });
+    //When player 1 gets the password right, wrongPassword is set to false.
+    //We then submit the form to trigger the router.post function in the puzzle1.js route
+    //This redirects player 2 to puzzle 2
+    let wrongPassword = <%- JSON.stringify(wrongPassword) %>;
+    if (wrongPassword === false) {
+        document.getElementById("submitForm").submit();
+    }
 
     let table = document.getElementById("dictionaryTable");
-    const alphabet = <%- JSON.stringify(norm) %>;
-    let code_alphabet = <%- JSON.stringify(code) %>;
+    const alphabet = <%- JSON.stringify(alphabet) %>;
+    let code_alphabet = <%- JSON.stringify(code_alphabet) %>;
 
     let row_normal1 = table.insertRow(0);
     row_normal1.classList.add("norm");

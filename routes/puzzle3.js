@@ -11,21 +11,21 @@ let correctAnswer = false;
 
 router.get('/puz3_player1', function (req, res, next) {
     res.render('puz3_player1', {
-        arrayOfColors: arrayOfColors,
-        timesCleared: timesCleared,
-        timesToClear: timesToClear,
+        arrayOfColors,
+        timesCleared,
+        timesToClear,
         correctAnswer: null
     });
 });
 
 router.get('/puz3_player2', function (req, res, next) {
     res.render('puz3_player2', {
-        colorPool: colorPool,
-        cellColors: cellColors,
-        possibleAnswers: possibleAnswers,
-        isMax: isMax,
-        timesCleared: timesCleared,
-        timesToClear: timesToClear
+        colorPool,
+        cellColors,
+        possibleAnswers,
+        isMax,
+        timesCleared,
+        timesToClear
     });
 });
 
@@ -51,10 +51,10 @@ router.post('/puz3_player1', function (req, res, next) {
         [arrayOfColors, colorPool, cellColors, possibleAnswers, isMax, correctColor]
             = startNewPuzzle3();
         res.render('puz3_player1', {
-            arrayOfColors: arrayOfColors,
-            timesCleared: timesCleared,
-            timesToClear: timesToClear,
-            correctAnswer: correctAnswer,
+            arrayOfColors,
+            timesCleared,
+            timesToClear,
+            correctAnswer,
         });
     }
 });

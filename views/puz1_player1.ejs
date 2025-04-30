@@ -6,6 +6,7 @@
     <title>Player 1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/stylesheets/puz1style.css">
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
 <br/>
@@ -13,7 +14,7 @@
     <h1 class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
         Can you decipher the secret code?
     </h1>
-    <h2 class="text-xl"> Describe the hieroglpyhs to Player 2 </h2>
+    <h2 class="text-xl"> Describe the symbols to Player 2 </h2>
     <table class="mx-auto border-black text-black text-5xl">
         <tr id="tableRow"></tr>
     </table>
@@ -40,6 +41,9 @@
 </body>
 </html>
 <script>
+    //Connect to the socket. This allows us to send information to player 2
+    const socket = io();
+
     const row = document.getElementById('tableRow');
     const hieroglyph = <%- JSON.stringify(locals.code_symbol) %>;
 
@@ -63,6 +67,9 @@
             correctAudio.volume = 0.5;
             correctAudio.play();
             correctAudio.addEventListener("ended", () => {
+                //When the audio for correct input is done we refresh player 2's page and submit
+                //the form. This allows both players in the puzzle1.js route to forward to puzzle 2
+                socket.emit('newInput');
                 document.getElementById("inputForm").submit()
             });
         }

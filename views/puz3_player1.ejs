@@ -43,7 +43,9 @@
     //colors from rgb values to hex values, which we do in the checkColor() function.
 </script>
 <script>
+    //Connect to the socket. This allows us to send information to player 2
     const socket = io();
+
     let correctAudio = document.getElementById("correctAudio");
     let wrongAudio = document.getElementById("wrongAudio");
     //Check if last button press was correct, and play corresponding sound file
@@ -81,7 +83,7 @@
     //When a button is pressed, font color is saved, and then checked in puzzle3.js
     function checkColor(button) {
         //Refresh player2's site
-        socket.emit('buttonPressed');
+        socket.emit('newInput');
         //Here we use the toHexString() function from w3schools to make sure the
         //font color is saved in the same format as it was originally assigned as,
         //earlier in this script tag. This allows for correct comparisons on the server.

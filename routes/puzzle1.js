@@ -30,7 +30,7 @@ function randomiseCode(alphabet, code_alphabet) {
 }
 let wrongPassword = null;
 router.get('/puz1_player1', function (req, res, next) {
-    res.render('puz1_player1', {code_symbol: code_symbol, wrongPassword: wrongPassword});
+    res.render('puz1_player1', {code_symbol, wrongPassword});
 });
 
 router.post('/puz1_player1', function (req, res, next) {
@@ -40,17 +40,21 @@ router.post('/puz1_player1', function (req, res, next) {
     }
     else if (req.body.codeGuess.toUpperCase() === code_norm) {
         wrongPassword = false;
-        res.render('puz1_player1', {code_symbol: code_symbol, prevGuess: req.body.codeGuess, wrongPassword: wrongPassword});
+        res.render('puz1_player1', {code_symbol, prevGuess: req.body.codeGuess, wrongPassword});
 
     } else {
         console.log('Wrong code');
         wrongPassword = true;
-        res.render('puz1_player1', {code_symbol: code_symbol, prevGuess: req.body.codeGuess, wrongPassword: wrongPassword});
+        res.render('puz1_player1', {code_symbol, prevGuess: req.body.codeGuess, wrongPassword});
     }
 });
 
 router.get('/puz1_player2', function (req, res, next) {
-    res.render('puz1_player2', {norm: alphabet, code: code_alphabet});
+    res.render('puz1_player2', {alphabet, code_alphabet, wrongPassword});
+});
+
+router.post('/puz1_player2', function (req, res, next) {
+    res.redirect('../puzzle2/puz2_player2');
 });
 
 module.exports = router;

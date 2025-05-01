@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Puzzle2 Page</title>
-  <link rel="stylesheet" href="/stylesheets/puz2styleplayer1.css">
+    <meta charset="UTF-8">
+    <title>Puzzle2 Page</title>
+    <link rel="stylesheet" href="/stylesheets/puz2styleplayer1.css">
 </head>
 
 <body>
-  <div class="game-container">
+<div class="game-container">
     <div class="hanger-container">
-      <img class="hanger" src="/images/ropehanger.png" alt="Rope Hanger">
+        <img class="hanger" src="/images/ropehanger.png" alt="Rope Hanger">
 
-      <div class="rope-container">
-        <% displayRopes.forEach((rope, index) => { %>
-          <div class="rope-wrapper">
-            <img onclick="ropeKey(<%= index %>)" src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.color.toLowerCase() %>rope.png" alt="<%= rope.color %> Rope">
-            <div class="rope-label"><%= rope.color %> - <%= rope.rule %></div>
-          </div>
-        <% }) %>
-      </div>
+        <div class="rope-container">
+            <% displayRopes.forEach((rope, index) => { %>
+                <div class="rope-wrapper">
+                    <img onclick="ropeKey(<%= index %>)"
+                         src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.color.toLowerCase() %>rope.png"
+                         alt="<%= rope.color %> Rope">
+                    <div class="rope-label"><%= rope.color %> - <%= rope.rule %></div>
+                </div>
+            <% }) %>
+        </div>
     </div>
-  </div>
+</div>
 
-  <h1 id="gameTitle" class="game-title">
+<h1 id="gameTitle" class="game-title">
     Figure out the correct order to pull the ropes based on the clues <span id="testValue"><%= test %></span>
-  </h1>
-
-  <script src="/js/room2Rope.js"></script>
+</h1>
 </body>
 </html>
+<script src="/js/room2Rope.js"></script>

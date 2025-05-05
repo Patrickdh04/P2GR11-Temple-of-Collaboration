@@ -6,11 +6,11 @@ html, body {
     background-image: url('/images/bgpuz2.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-repeat: repeat;
+    background-attachment: scroll;
   }
 
-  /*Ropes*/
+/*Main Container for game area*/
 .game-container {
     background-image: url('/images/bgpuz2.png'); 
     background-size: cover;
@@ -23,13 +23,15 @@ html, body {
     padding-top: 20px;
   }
 
-  .hanger-container {
+/*Container for hanger and ropes*/
+.hanger-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .hanger {
+/*Hanger image styling*/
+.hanger {
    width: 1400px; 
    height: 200px; 
    object-fit: fill; 
@@ -38,7 +40,8 @@ html, body {
    image-rendering: pixelated;
   }
 
-  .rope-container {
+/* Container holding the rope images*/
+.rope-container {
     display: flex;
     flex-direction: row;
     gap: 4px; 
@@ -46,7 +49,8 @@ html, body {
     background: none;
   }
 
-  .rope-container img {
+  /*Styling for each rope image*/
+.rope-container img {
     width: 150px; 
     height: 900px;
     object-fit: cover;
@@ -54,13 +58,15 @@ html, body {
     transition: transform 0.2s ease;
   }
 
-  .rope-container img:hover {
+/*Hover effect*/
+.rope-container img:hover {
     transform: scale(1.05);
   }
-  
-  .game-title {
-  position: fixed;
-  bottom: 10px;
+
+/*Fixed game title at the bottom of the screen*/
+.game-title {
+  position: relative;
+  bottom: 30px;
   width: 100%;
   text-align: center;
   color: white;

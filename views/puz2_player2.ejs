@@ -8,15 +8,20 @@
 </head>
 <body>
     <div class="book-container">
-        <img src="/images/manual.png" alt="Player 2 Manual" class="book-image">
         <div class="text-overlay">
-            <h2>Relay the Clues to Solve the Puzzle</h2>
-            <p>
-                Are the ropes blah blah blah<br>
-                Are there two blah blah blah<br>
-                So on and so forth blah.
-            </p>
+            <div class="heading2">Relay the Clues to Solve the Puzzle</div>
+    
+            <% ruleParagraphs.forEach((paragraph, i) => { %>
+                <div class="rule-paragraph">
+                    <h3>Paragraph <%= i + 1 %></h3>
+                    <ol>
+                        <% paragraph.forEach(clue => { %>
+                            <li><%= clue %></li>
+                        <% }) %>
+                    </ol>
+                </div>
+            <% }) %>
         </div>
-    </div>
+    </div>    
 </body>
 </html>

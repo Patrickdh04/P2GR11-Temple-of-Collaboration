@@ -9,18 +9,21 @@
 <body>
     <div class="book-container">
         <div class="text-overlay">
-            <div class="heading2">Relay the Clues to Solve the Puzzle</div>
+            <div class="heading2">Hints</div>
     
+            <div class="container">
             <% ruleParagraphs.forEach((paragraph, i) => { %>
+
                 <div class="rule-paragraph">
-                    <h3>Paragraph <%= i + 1 %></h3>
-                    <ol>
+                    <h3>Sequence <%= i + 1 %></h3>
+                    <ol class="paragraph-list">
                         <% paragraph.forEach(clue => { %>
                             <li><%= clue %></li>
                         <% }) %>
                     </ol>
                 </div>
             <% }) %>
+            </div>
         </div>
     </div>    
 </body>

@@ -144,7 +144,7 @@ function buildDecoyParagraphs(ropes, count = 3) {
             if (Math.random() < 0.5) {
                 clues.push(buildClue(`the ${position} rope is ${color}`, action));
             } else {
-                clues.push(buildClue(`the ${position} rope has the pattern ${rule}`, action));
+                clues.push(buildClue(`the \${position} rope has the pattern ${rule}`, action));
             }
         }
 

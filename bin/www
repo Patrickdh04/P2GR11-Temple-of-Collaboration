@@ -21,11 +21,24 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+//Enable socket.io
+const socketIo = require('socket.io');
+const io = socketIo(server);
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  //When an input is submitted in player 1's views, we want the player 2 views to know to refresh
+  socket.on('newInput', () => {
+    socket.broadcast.emit('refreshPage');
+  });
+});
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, '0.0.0.0');
 server.on('error', onError);
 server.on('listening', onListening);
 

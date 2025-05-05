@@ -6,50 +6,30 @@
     <title>Player 2 Manual</title>
     <link rel="stylesheet" href="/stylesheets/puz1style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body style="background-color: #B0903D">
+
 
 <h1 class="text-4xl mt-6 ml-6 bg-yellow-400 text-black px-6 py-2 rounded shadow-md inline-block">
     Manual
 </h1>
 
-
-
 <div class="flex flex-col items-center">
     <table id="header" class="mb-4">
         <tr>
-            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Hieroglyph Dictionary</th>
+            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Symbol Dictionary</th>
         </tr>
     </table>
-
     <table id="dictionaryTable" class="dictionary"></table>
 </div>
-
-<script>
-
-    let table = document.getElementById("dictionaryTable");
-    const alphabet = <%- JSON.stringify(norm) %>;
-    let code_alphabet = <%- JSON.stringify(code) %>;
-
-    let row_normal1 = table.insertRow(0);
-    row_normal1.classList.add("norm");
-    let row_code1 = table.insertRow(1);
-    row_code1.classList.add("code");
-
-    let row_normal2 = table.insertRow(2);
-    row_normal2.classList.add("norm");
-    let row_code2 = table.insertRow(3);
-    row_code2.classList.add("code");
-
-    for (let i = 0; i < alphabet.length / 2; i++) {
-        row_normal1.insertCell(i).innerText = alphabet[i];
-        row_code1.insertCell(i).innerText = code_alphabet[i];
-    }
-    for (let i = alphabet.length / 2; i < alphabet.length; i++) {
-        row_normal2.insertCell(i - alphabet.length / 2).innerText = alphabet[i];
-        row_code2.insertCell(i - alphabet.length / 2).innerText = code_alphabet[i];
-    }
-
-</script>
+<form method="post" id="submitForm"></form>
 </body>
 </html>
+<script>
+    //We save route variables here as global variables to be used in our js script
+    window.wrongPassword = <%- JSON.stringify(wrongPassword) %>;
+    window.alphabet = <%- JSON.stringify(alphabet) %>;
+    window.code_alphabet = <%- JSON.stringify(code_alphabet) %>;
+</script>
+<script src="/js/puz1_player2.js"></script>

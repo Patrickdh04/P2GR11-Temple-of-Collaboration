@@ -4,51 +4,44 @@
     <meta charset="UTF-8">
     <title>puz3_player1</title>
     <link rel="stylesheet" href="/stylesheets/puz3style.css">
-</head>
-<body>
-<h2>Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br>
-    <span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is.
-</h2>
-<form action="/puzzle3/puz3_player1" method="post" id="buttonForm">
-    <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
-    <button onclick="checkColor(this)" type="button" id="button1"></button>
-    <button onclick="checkColor(this)" type="button" id="button2"></button>
-    <button onclick="checkColor(this)" type="button" id="button3"></button>
-    <button onclick="checkColor(this)" type="button" id="button4"></button>
-    <button onclick="checkColor(this)" type="button" id="button5"></button>
-    <button onclick="checkColor(this)" type="button" id="button6"></button>
-</form>
-</body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
+</head>
+<body style="background-color: #B0903D;" class="min-h-screen flex flex-col items-center justify-start py-10">
+
+<div class="text-center space-y-2">
+    <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black w-[1000px]">
+        Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br> </h1>
+    <h2><span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br></h2>
+    <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
+    Get <%= timesToClear %> correct in a row to win.
+
+    <form method="post" id="buttonForm">
+        <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button1"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button2"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button3"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button4"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button5"></button>
+        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button6"></button>
+    </form>
+</div>
+<audio id="correctAudio">
+    <source src="/sounds/correct.mp3" type="audio/mpeg">
+</audio>
+<audio id="wrongAudio">
+    <source src="/sounds/wrong.mp3" type="audio/mpeg">
+</audio>
+</body>
 </html>
 <script src="https://www.w3schools.com/lib/w3color.js">
     //In this tag we include a library made by w3schools with functions that allow us to change
     //colors from rgb values to hex values, which we do in the checkColor() function.
 </script>
 <script>
-
-    let buttons = [button1, button2, button3, button4, button5, button6];
-    button1 = document.getElementById("button1");
-    button2 = document.getElementById("button2");
-    button3 = document.getElementById("button3");
-    button4 = document.getElementById("button4");
-    button5 = document.getElementById("button5");
-    button6 = document.getElementById("button6");
-
-    let randomColors = <%- JSON.stringify(arrayOfColors) %>;
-
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.color = randomColors[i].fontColor;
-        buttons[i].style.backgroundColor = randomColors[i].backgroundColor;
-        buttons[i].innerHTML = randomColors[i].fontText;
-    }
-
-    //When a button is pressed, font color is saved, and then checked in puzzle3.js
-    function checkColor(button) {
-        //Here we use the toHexString() function from w3schools to make sure the
-        //font color is saved in the same format as it was originally assigned as,
-        //earlier in this script tag. This allows for correct comparisons on the server.
-        document.getElementById("fontColorOfButton").value = w3color(button.style.color).toHexString().toUpperCase();
-        document.getElementById("buttonForm").submit();
-    }
+    //We save route variables here as global variables to be used in our js script
+    window.correctAnswer = <%- JSON.stringify(correctAnswer) %>;
+    window.arrayOfColors = <%- JSON.stringify(arrayOfColors) %>;
 </script>
+<script src="/js/puz3_player1.js"></script>

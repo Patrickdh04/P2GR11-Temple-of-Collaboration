@@ -1,0 +1,130 @@
+/* Base page styling */
+body {
+    background-image: url("../images/bgpuz1player2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: #B0903D;
+
+    padding: 0px;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    text-align: center;
+}
+
+/*Container for book image and overlay text*/
+.book-container {
+    position: absolute;
+    display: flex;
+    left:500px;
+    top: 100px;
+    width: 900px;
+    /*max-width: 100% ;*/
+    height:750px;
+    background-image: url('/images/manual.png');
+    background-position-x: -250px;
+    background-position-y: -150px;
+    background-repeat: no-repeat;
+}
+
+/*Styling for book image*/
+.book-image {
+    width: 200%;
+    height: auto;
+    display: block;
+}
+
+/* Stylized dictionary table */
+.dictionary {
+    width: 90%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    background-color: rgba(255, 245, 200, 0.9); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #8B5A2B;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Table header row styling */
+.dictionary th {
+    background-color: #DEB887; 
+    color: #3B2F1C;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #8B5A2B;
+    position: sticky;
+    z-index: 1;
+}
+
+/* Table cell styling */
+.dictionary td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #d3b58f;
+    color: #2b1e0e;
+    text-align: center;
+}
+
+/* Alternate row shading for easier reading */
+.dictionary tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+.px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.book-content{
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    width: 800px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding: 0 60px;
+}
+
+.left-page, .right-page{
+    width: 45%;
+    height: auto;
+}
+
+.table-wrapper {
+    max-height: 100%; 
+    overflow-y: auto;
+    width: 45%;
+    background-color: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #b38a53;
+    border-radius: 4px;
+}
+
+/* Link styling */
+a {
+    color: #00B7FF;
+}

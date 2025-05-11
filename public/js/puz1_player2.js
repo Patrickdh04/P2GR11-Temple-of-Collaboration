@@ -16,21 +16,42 @@ let table = document.getElementById("dictionaryTable");
 const alphabet = window.alphabet;
 let code_alphabet = window.code_alphabet;
 
-let row_normal1 = table.insertRow(0);
-row_normal1.classList.add("norm");
-let row_code1 = table.insertRow(1);
-row_code1.classList.add("code");
+//Create references to left and right tables
+const leftTable = document.getElementById('leftDictionary');
+const rightTable = document.getElementById('rightDictionary');
 
-let row_normal2 = table.insertRow(2);
-row_normal2.classList.add("norm");
-let row_code2 = table.insertRow(3);
-row_code2.classList.add("code");
+//Function to add header to table
+function createHeader(table) {
+    const header = document.createElement('tr');
+    const letterHeader = document.createElement('th');
+    const symbolHeader = document.createElement('th');
 
-for (let i = 0; i < alphabet.length / 2; i++) {
-    row_normal1.insertCell(i).innerText = alphabet[i];
-    row_code1.insertCell(i).innerText = code_alphabet[i];
+    letterHeader.textContent = 'Letter';
+    symbolHeader.textContent = 'Symbol';
+
+    header.appendChild(letterHeader);
+    header.appendChild(symbolHeader);
+    table.appendChild(header);
 }
-for (let i = alphabet.length / 2; i < alphabet.length; i++) {
-    row_normal2.insertCell(i - alphabet.length / 2).innerText = alphabet[i];
-    row_code2.insertCell(i - alphabet.length / 2).innerText = code_alphabet[i];
+
+createHeader(leftTable);
+createHeader(rightTable);
+
+for (let i = 0; i < alphabet.length; i++) {
+    const row = document.createElement('tr');
+
+    const letterCell = document.createElement('td');
+    letterCell.textContent = alphabet[i];
+
+    const symbolCell = document.createElement('td');
+    symbolCell.textContent = code_alphabet[i];
+
+    row.appendChild(letterCell);
+    row.appendChild(symbolCell);
+
+    if (i < 13) {
+        leftTable.appendChild(row);
+    } else {
+        rightTable.appendChild(row);
+    }
 }

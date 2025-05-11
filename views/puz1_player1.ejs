@@ -4,45 +4,45 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Player 1</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/stylesheets/puz1style.css">
+    <link rel="stylesheet" href="/stylesheets/puz1styleplayer1.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
-<body style="background-color: #B0903D;" class="flex items-center justify-center h-screen">
-<br/>
-<div class="text-center space-y-4">
-    <h1 class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
-        Can you decipher the secret code?
-    </h1>
-    <h2 class="text-xl"> Describe the symbols to Player 2 </h2>
-    <table class="mx-auto border-black text-black text-5xl">
-        <tr id="tableRow"></tr>
-    </table>
-    <form id="inputForm" method="POST">
-        <input
-                style="text-transform: uppercase"
-                type="text"
-                name="codeGuess"
-                placeholder="Type code here"
-                value="<%= locals.prevGuess %>"
-        />
-        <button type="submit">Submit</button>
-    </form>
-    <br>
-    <h2 class="wrong-password text-2xl" id="wrongPass"></h2>
+<body>
+    <div class="game-screen">
+        <table class="code-table hieroglyphs-table">
+            <tr id="tableRow"></tr>
+        </table>
 
-</div>
-<audio id="correctAudio">
-    <source src="/sounds/correct.mp3" type="audio/mpeg">
-</audio>
-<audio id="wrongAudio">
-    <source src="/sounds/wrong.mp3" type="audio/mpeg">
-</audio>
+
+        <div class="main-container">
+            <h1 class="title-heading">Can you decipher the secret code?</h1>
+
+            <form id="inputForm" method="POST">
+                <input
+                    class="uppercase-input"
+                    type="text"
+                    name="codeGuess"
+                    placeholder="TYPE CODE HERE"
+                    value="<%= locals.prevGuess %>"
+                />
+                <button type="submit">Submit</button>
+            </form>
+
+            <h2 class="wrong-password" id="wrongPass"></h2>
+        </div>
+    </div>
+
+    <audio id="correctAudio">
+        <source src="/sounds/correct.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrongAudio">
+        <source src="/sounds/wrong.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        window.hieroglyph = <%- JSON.stringify(code_symbol) %>;
+        window.wrongPassword = <%- JSON.stringify(wrongPassword) %>;
+    </script>
+    <script src="/js/puz1_player1.js"></script>
 </body>
 </html>
-<script>
-    //We save route variables here as global variables to be used in our js script
-    window.hieroglyph = <%- JSON.stringify(code_symbol) %>;
-    window.wrongPassword = <%- JSON.stringify(wrongPassword) %>;
-</script>
-<script src="/js/puz1_player1.js"></script>

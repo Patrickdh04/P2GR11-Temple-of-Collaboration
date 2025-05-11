@@ -4,26 +4,32 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Player 2 Manual</title>
-    <link rel="stylesheet" href="/stylesheets/puz1style.css">
+    <link rel="stylesheet" href="/stylesheets/puz1styleplayer2.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body style="background-color: #B0903D">
+    <div class="book-container">
+        <div class="text-overlay">
+            <h1 class="text-4xl mt-6 ml-6 bg-yellow-400 text-black px-6 py-2 rounded shadow-md inline-block">
+                Manual
+            </h1>
+
+            <!-- Two-table layout inside book -->
+            <div class="book-content">
+                <div class="table-wrapper">
+                    <table id="leftDictionary" class="dictionary"></table>
+                </div>
+                <div class="table-wrapper">
+                    <table id="rightDictionary" class="dictionary"></table>
+                </div>
+            </div>
+            <form method="post" id="submitForm"></form>
+        </div>
+    </div>
+</body>
 
 
-<h1 class="text-4xl mt-6 ml-6 bg-yellow-400 text-black px-6 py-2 rounded shadow-md inline-block">
-    Manual
-</h1>
-
-<div class="flex flex-col items-center">
-    <table id="header" class="mb-4">
-        <tr>
-            <th class="bg-yellow-400 text-black text-3xl px-20 py-2 rounded">Symbol Dictionary</th>
-        </tr>
-    </table>
-    <table id="dictionaryTable" class="dictionary"></table>
-</div>
-<form method="post" id="submitForm"></form>
 </body>
 </html>
 <script>

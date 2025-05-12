@@ -83,6 +83,5 @@ function newPuz3Player2(arrayOfColors) {
 //When we send the possibleAnswers array to puz3_player2 it will have the right answer
 //as the corresponding correct index, matching the right color of either max or min
     [possibleAnswers[0], possibleAnswers[correctAnswer]] = [possibleAnswers[correctAnswer], possibleAnswers[0]];
-    console.log(possibleAnswers);
     return [colorPool, cellColors, possibleAnswers, isMax, correctColor];
 }

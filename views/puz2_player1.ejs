@@ -17,16 +17,16 @@
                     <img onclick="ropeKey(<%= index %>)"
                          src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.colour.toLowerCase() %>rope.png"
                          alt="<%= rope.colour %> Rope">
-                    <div class="rope-label"><%= rope.colour %> - <%= rope.rule %></div>
                 </div>
             <% }) %>
         </div>
     </div>
+    <h1 id="gameTitle" class="game-title">
+    Figure out the correct order to pull the ropes based on the clues <span id="testValue"></span>
+    </h1>
 </div>
 
-<h1 id="gameTitle" class="game-title">
-    Figure out the correct order to pull the ropes based on the clues <span id="testValue"></span>
-</h1>
+
 </body>
 </html>
 <script src="/js/room2Rope.js"></script>

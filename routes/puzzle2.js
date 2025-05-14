@@ -90,7 +90,7 @@ function buildDecoyParagraphs(ropes, count = 3) {
     const allColours = ["Red", "Pink", "Silver", "Brass", "Bronze", "Gold", "White", "Clear"];
     const allRules = ["Straight", "Half-brown", "Solid", "Polkadotted", "Zig-zagged", "Second"];
     const allPositions = ["first", "second", "third", "fourth", "fifth", "sixth"];
-    const allActions = ["first rope", "second rope", "third rope", "fourth rope","fifth rope", "last rope", "the rope before the last one"];
+    const allActions = ["1st rope", "2nd rope", "3rd rope", "4th rope","5th rope", "last rope", "the rope before the last one"];
 
     const paragraphs = [];
 

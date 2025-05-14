@@ -5,6 +5,7 @@ body {
     background-size: auto;
     background-position: top center;
     background-color: #B0903D;
+    image-rendering: pixelated;
 
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -73,8 +74,8 @@ body {
 
 /* Hieroglyphs row placed above the door */
 .hieroglyphs-table {
-    position: absolute;
-    top: 100px; 
+    position: fixed;
+    top: 110px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;

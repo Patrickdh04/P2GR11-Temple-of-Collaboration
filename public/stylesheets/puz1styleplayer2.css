@@ -1,10 +1,11 @@
 /* Base page styling */
 body {
-    background-image: url("../images/bgpuz1player2.png");
+    background-image: url("../images/bgpuz1puz2player2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-color: #B0903D;
+    image-rendering: pixelated;
 
     padding: 0px;
     margin: 0;
@@ -32,6 +33,7 @@ body {
     background-position-x: -250px;
     background-position-y: -150px;
     background-repeat: no-repeat;
+    image-rendering: pixelated;
 }
 
 /*Styling for book image*/
@@ -43,31 +45,32 @@ body {
 
 /* Stylized dictionary table */
 .dictionary {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
-    font-size: 1.2rem;
-    background-color: rgba(255, 245, 200, 0.9); 
+    font-size: 2.3rem;
+    background-color: transparent; 
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     border: 2px solid #8B5A2B;
-    border-radius: 12px;
+    border-radius: 1px;
     overflow: hidden;
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 
 /* Table header row styling */
 .dictionary th {
     background-color: #DEB887; 
     color: #3B2F1C;
-    padding: 10px 20px;
+    padding: 1px 2px;
     font-weight: bold;
-    border-bottom: 2px solid #8B5A2B;
-    position: sticky;
+    border-bottom: 1px solid #8B5A2B;
     z-index: 1;
 }
 
 /* Table cell styling */
 .dictionary td {
     padding: 10px 15px;
-    border-bottom: 1px solid #d3b58f;
+    border-bottom: 5px solid #d3b58f;
     color: #2b1e0e;
     text-align: center;
 }
@@ -83,7 +86,7 @@ body {
 }
 
 .gap-8 {
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .px-10 {
@@ -93,13 +96,13 @@ body {
 
 .book-content{
     position: absolute;
-    top: 100px;
-    left: 40px;
+    top: 60px;
+    left: 50px;
     width: 800px;
-    height: 500px;
+    height: 550px;
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 110px;
     padding: 0 60px;
 }
 

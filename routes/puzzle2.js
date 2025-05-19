@@ -3,9 +3,9 @@ var router = express.Router();
 const {shuffleArray} = require('./functions');
 
 const ropeColour = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "Cyan", "Black"];
-const rules = ["First", "Striped", "Half white", "Wavy", "Distorted"];
+const rules = ["Solid", "Striped", "Half white", "Wavy", "Distorted"];
 const ruleToFolder ={
-    "First": "solid",
+    "Solid": "solid",
     "Striped": "striped",
     "Half white": "half_white",
     "Wavy": "wavy",
@@ -50,31 +50,25 @@ buildCorrectParagraph(displayRopes, pullSequence);
 
 
 // Generating correct paragraph
-function buildCorrectParagraph(displayRopes, pullSequence) {
-    const tempClues = [];
-    
+    function buildCorrectParagraph(displayRopes, pullSequence) {
+    const clues = [];
+
     for (let i = 0; i < pullSequence.length; i++) {
-        const ropeIndex = pullSequence[i];
-        const rope = displayRopes[ropeIndex];
+        const pullOrder = pullSequence[i]; 
+        const rope = displayRopes[i]; 
 
-        tempClues.push(`The ${ordinal(i + 1)} rope to pull is the ${rope.rule.toLowerCase()} ${rope.colour.toLowerCase()} rope.`);
-    }
-
-    const clues = [5]
-
-    for (let index = 0; index < pullSequence.length; index++) {
-        clues[index] = tempClues[pullSequence[index]]
+        clues[pullOrder] = `The ${ordinal(pullOrder + 1)} rope to pull is the ${rope.rule.toLowerCase()} ${rope.colour.toLowerCase()} rope.`;
     }
 
     return clues;
-    console.log(clues);
 
-    // Helper to convert 1 to 1st etc.
     function ordinal(n) {
         const suffixes = ["th", "st", "nd", "rd"];
         const v = n % 100;
         return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
-    }}
+    }
+}
+
 
 // helper function
 function getRandomElement(arr) {
@@ -82,45 +76,40 @@ function getRandomElement(arr) {
 }
 
 function buildClue(condition, action) {
-    return `if ${condition}, pull the ${action}.`;}
+    return `The ${condition} rope to pull is the ${action}.`;
+}
 
 // Generating 3 decoy paragraphs for manual
 
 function buildDecoyParagraphs(ropes, count = 3) {
     const allColours = ["Red", "Pink", "Silver", "Brass", "Bronze", "Gold", "White", "Clear"];
     const allRules = ["Straight", "Half-brown", "Solid", "Polkadotted", "Zig-zagged", "Second"];
-    const allPositions = ["first", "second", "third", "fourth", "fifth", "sixth"];
-    const allActions = ["1st rope", "2nd rope", "3rd rope", "4th rope","5th rope", "last rope", "the rope before the last one"];
 
     const paragraphs = [];
 
     for (let i = 0; i < count; i++) {
         const clues = [];
 
-        // rest of the clues
-        for (let j = 0; j < 4; j++) {
+        for (let j = 0; j < 5; j++) {
             const colour = getRandomElement(allColours).toLowerCase();
             const rule = getRandomElement(allRules).toLowerCase();
-            const position = getRandomElement(allPositions);
-            const action = getRandomElement(allActions);
+            const ordinalStr = ordinal(j + 1);
 
-            if (Math.random() < 0.5) {
-                clues.push(buildClue(`the ${position} rope is ${colour}`, action));
-            } else {
-                clues.push(buildClue(`the ${position} rope has the pattern ${rule}`, action));
-            }
+            clues.push(`The ${ordinalStr} rope to pull is the ${rule} ${colour} rope.`);
         }
-
-        // default clause at the end
-        clues.push("Otherwise, pull the first rope.");
 
         paragraphs.push(clues);
     }
 
     return paragraphs;
+
+    function ordinal(n) {
+        const suffixes = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+    }
 }
 
-      
 router.get('/puz2_player1', function (req, res, next) {
     res.render('puz2_player1', {displayRopes, pullSequence});
 });

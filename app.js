@@ -19,6 +19,7 @@ var indexRouter = require('./routes/index');
 var puzzle1Router = require('./routes/puzzle1');
 var puzzle2Router = require('./routes/puzzle2');
 var puzzle3Router = require('./routes/puzzle3');
+var roomDBRouter = require('./routes/roomDB');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/puzzle1', puzzle1Router);
 app.use('/puzzle2', puzzle2Router);
 app.use('/puzzle3', puzzle3Router);
+app.use('/', roomDBRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

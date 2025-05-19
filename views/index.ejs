@@ -8,6 +8,23 @@
   </head>
   <!-- Background -->
   <body class="bg-center bg-cover min-h-screen" style="background-image: url('/images/bg2.jpg'); background-size: 110%;">
+  <form action="/room" method="POST" class="space-y-4"> <!-- Form used to collect user input (Send it to /room) -->
+    <!-- Password input -->
+    <input
+            type="text"
+            name="password"
+            placeholder="Enter 4-letter password"
+            maxlength="4"
+            required
+            class="text-2xl p-4 rounded-lg"
+    />
+
+    <!-- Buttons for creating and joining rooms -->
+    <div class="space-x-4">
+      <button type="submit" name="action" value="create" class="bg-green-500 text-white px-6 py-3 rounded-xl hover:bg-green-600 text-xl">Create Room</button>
+      <button type="submit" name="action" value="join" class="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:bg-yellow-600 text-xl">Join Room</button>
+    </div>
+  </form>
   <div class="h-screen w-full flex items-center justify-center bg-black/60">
 
     <div class="text-center">

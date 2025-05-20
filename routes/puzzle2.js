@@ -4,7 +4,7 @@ const {shuffleArray} = require('./functions');
 
 const ropeColour = ["Yellow", "Blue", "Green", "Orange", "Purple", "Red", "Cyan", "Black"];
 const rules = ["Solid", "Striped", "Half white", "Wavy", "Distorted"];
-const ruleToFolder ={
+const ruleToFolder = {
     "Solid": "solid",
     "Striped": "striped",
     "Half white": "half_white",
@@ -19,10 +19,10 @@ console.log(rules);
 const test = 0; */
 
 // Building rope objects
-for (let i = 0; i < 5; i++){
-    allRopes.push ({
+for (let i = 0; i < 5; i++) {
+    allRopes.push({
         colour: ropeColour[i], rule: rules[i], folder: ruleToFolder[rules[i]]
-    }) ;
+    });
 }
 
 //Cloned allRopes for display
@@ -44,18 +44,18 @@ const pullSequence = displayRopes.map((_, i) => i);
 shuffleArray(pullSequence);
 
 console.log(displayRopes);
-console.log (pullSequence)
+console.log(pullSequence)
 
 buildCorrectParagraph(displayRopes, pullSequence);
 
 
 // Generating correct paragraph
-    function buildCorrectParagraph(displayRopes, pullSequence) {
+function buildCorrectParagraph(displayRopes, pullSequence) {
     const clues = [];
 
     for (let i = 0; i < pullSequence.length; i++) {
-        const pullOrder = pullSequence[i]; 
-        const rope = displayRopes[i]; 
+        const pullOrder = pullSequence[i];
+        const rope = displayRopes[i];
 
         clues[pullOrder] = `The ${ordinal(pullOrder + 1)} rope to pull is the ${rope.rule.toLowerCase()} ${rope.colour.toLowerCase()} rope.`;
     }
@@ -114,6 +114,10 @@ router.get('/puz2_player1', function (req, res, next) {
     res.render('puz2_player1', {displayRopes, pullSequence});
 });
 
+router.post('/puz2_player1', function (req, res, next) {
+    res.redirect('../puzzle3/puz3_player1');
+});
+
 router.get('/puz2_player2', function (req, res, next) {
     const correctParagraph = buildCorrectParagraph(displayRopes, pullSequence);
     const decoyParagraphs = buildDecoyParagraphs(displayRopes, 3);
@@ -123,6 +127,10 @@ router.get('/puz2_player2', function (req, res, next) {
     console.log("ruleParagraphs:", ruleParagraphs);
 
     res.render('puz2_player2', {ruleParagraphs});
+});
+
+router.post('/puz2_player2', function (req, res, next) {
+    res.redirect('../puzzle3/puz3_player2');
 });
 
 module.exports = router;

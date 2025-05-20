@@ -19,8 +19,8 @@ body {
 .book-container {
     position: absolute;
     display: flex;
-    left:500px;
-    top: 100px;
+    left:center;
+    top: center;
     width: 900px;
     /*max-width: 100% ;*/
     height:750px;

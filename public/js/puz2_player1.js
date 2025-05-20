@@ -1,17 +1,8 @@
 //Connect to the socket. This allows us to send information to player 2
 const socket = io();
-socket.on('forwardToPuzzle3', () => {
-    window.location.href = "/puzzle3/puz3_player1";
+socket.on('refreshPage', () => {
+    location.reload();
 });
-
-/*let test = 0;
-
-function ropeKey(index) {
-    if (index === 0) {
-        test++;
-        document.getElementById('testValue').textContent = test;
-    }
-} */
 
 let currentStep = 0;
 
@@ -36,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
             // Puzzle complete, forwarding to puzzle 3
             if (currentStep === correctSequence.length) {
                 correctAudio.addEventListener("ended", () => {
-                    socket.emit("puzzleSolved");
+                    socket.emit("puzzle3Done");
                     document.getElementById("advanceForm").submit();
                 });
             }

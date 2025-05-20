@@ -50,20 +50,5 @@ server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });*/
 
-// Socket.IO logic
-io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  socket.on('puzzleSolved', () => {
-    console.log('Puzzle solved!');
-    socket.broadcast.emit('forwardToPuzzle3');
-  });
-
-  socket.on('refreshPage', () => {
-    console.log('Player requested refresh');
-    socket.broadcast.emit('refreshPage');
-  });
-});
-
 module.exports = { server, io };
 module.exports.app = app;

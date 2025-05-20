@@ -14,21 +14,26 @@
 
         <!-- Heading and Score -->
         <div class="text-center space-y-4">
-            <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
+            <h1 id="playerInfo" class="playerTextHeading">
                 Which color appears the <span id="maxOrMin" class="emphasis"></span>?
             </h1>
             <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
-            <p>Get <%= timesToClear %> correct in a row to win.</p>
+                <div class="info">
+                    <p>Get <%= timesToClear %> correct in a row to win.</p>
+                </div>
+
         </div>
         <!-- 10x10 table -->
             <table id="tableColor" class="colorTable"></table>
         
         <!-- Instructions -->
         <div class="small-table flex flex-col items-center space-y-2 mt-8">
-            <p class="text-lg text-center">
-                Tell Player 1 the matching color from the second row <br>
-                of the table below.
-            </p>
+            <div class="smallTableText">
+                <p class="text-lg text-center">
+                    Tell Player 1 the matching color from the second row <br>
+                    of the table below.
+                </p>
+            </div>
             <table id="tableAnswers" class="answerTable mx-auto"></table>
         </div>
 

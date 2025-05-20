@@ -53,6 +53,21 @@
     height: 45px; 
 }
 
+.playerTextHeading{
+    color: white;
+    font-size: 3rem;
+}
+
+.info{
+    color: white;
+    font-size: 2rem;
+}
+
+.smallTableText{
+    color: white;
+    font-size: 2rem;
+}
+
 .fontColorShowcase {
     color: blue;
     font-size: 40px;
@@ -64,10 +79,6 @@
 
 .scoreBoard {
     font-weight: bold;
-    background-color: #8B5A2B;
-    color: #fff8dc;
-    border: 2px solid #a67c52;
-    padding: 6px 12px;
-    font-family: 'Georgia', serif;
-    font-size: 18px;
+    background-color: #B15A29;
+    color: white;
 }

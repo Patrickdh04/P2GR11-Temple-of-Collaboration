@@ -46,6 +46,21 @@ button:hover {
     font-weight: bold;
 }
 
+.gameInfoHeading{
+    color: white;
+    font-size: 3rem;
+}
+
+.gameInfoP1{
+    color: white;
+    font-size: 2rem;
+}
+
+.scoreboardText{
+    color: white;
+    font-size: 2rem;
+}
+
 .scoreBoard {
     font-weight: bold;
     background-color: #B15A29;

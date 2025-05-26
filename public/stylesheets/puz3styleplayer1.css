@@ -1,0 +1,68 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url('/images/bgpuz3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130%;
+    overflow: hidden;
+  }
+
+button {
+    font-weight: bold;
+    font-weight: 700;
+    font-size: 50px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    cursor: pointer;
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+}
+
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.fontColorShowcase {
+    color: blue;
+    font-size: 40px;
+}
+
+.emphasis {
+    font-weight: bold;
+}
+
+.gameInfoHeading{
+    color: white;
+    font-size: 3rem;
+}
+
+.gameInfoP1{
+    color: white;
+    font-size: 2rem;
+}
+
+.scoreboardText{
+    color: white;
+    font-size: 2rem;
+}
+
+.scoreBoard {
+    font-weight: bold;
+    background-color: #B15A29;
+    color: white;
+}

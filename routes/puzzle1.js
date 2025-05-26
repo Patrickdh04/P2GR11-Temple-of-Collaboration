@@ -2,6 +2,21 @@ const express = require('express');
 const router = express.Router();
 const {shuffleArray} = require('./functions');
 
+//Unit tests for shuffleArray()
+const assert = require('assert');
+const originalArray = [1,2,3,4,5,6];
+const shuffledArray = shuffleArray([...originalArray]);
+//We make sure the length is the same as the input
+assert.strictEqual(originalArray.length, shuffledArray.length, "Length of the shuffled array does not match");
+//We make sure the outputted array has the same elements as the input
+assert.deepStrictEqual([...originalArray].sort(), [...shuffledArray].sort(), "Elements of shuffled array does not match");
+//Normally you would test if the output matches the expected output, however
+//as this is a function which has a random output that can potentially match the input
+//we cannot compare anything to the exact output
+//We can check the output of an array with one element
+assert.deepStrictEqual([1], shuffleArray([1]), "Output of shuffled array does not match")
+
+
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '𓏞', '𓅾', '𓃂', '𓂯', '𓉩',
@@ -10,7 +25,6 @@ let code_alphabet = ['𓀃', '𓋬', '𓀭', '𓉷', '𓀒', '𓀸', '𓁖', '�
 shuffleArray(code_alphabet);
 let [code_norm, code_symbol] = randomiseCode(alphabet, code_alphabet);
 console.log("Code norm: " + code_norm + " Code symbol: " + code_symbol);
-console.log("code_alphabet: " + code_alphabet + "alphabet: " + alphabet);
 
 function randomiseCode(alphabet, code_alphabet) {
     let temp_alphabet = alphabet.slice();

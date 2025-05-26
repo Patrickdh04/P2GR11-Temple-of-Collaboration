@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>puz3_player2</title>
-    <link rel="stylesheet" href="/stylesheets/puz3style.css">
+    <link rel="stylesheet" href="/stylesheets/puz3styleplayer2.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/socket.io/socket.io.js"></script>
-
 </head>
+
 <body style="background-color: #B0903D;" class="min-h-screen flex flex-col items-center justify-start py-10">
 
-<div class="text-center space-y-4">
-    <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black">
-        Which color appears the <span id="maxOrMin" class="emphasis"></span>?</h1>
-    <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
-    Get <%= timesToClear %> correct in a row to win.
-</div>
+    <div class="game-container w-full max-w-screen-lg flex flex-col items-center justify-start py-10 relative">
 
-<div class="flex justify-center items-center space-x-2 mt-6">
-    <!-- Table 1 -->
-    <table id="tableColor" class="colorTable mx-auto"></table>
+        <!-- Heading and Score -->
+        <div class="text-center space-y-4">
+            <h1 id="playerInfo" class="playerTextHeading">
+                Which color appears the <span id="maxOrMin" class="emphasis"></span>?
+            </h1>
+            <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
+                <div class="info">
+                    <p>Get <%= timesToClear %> correct in a row to win.</p>
+                </div>
 
-    <!-- Table 2 + text -->
-    <div class="flex flex-col items-center space-y-2">
-        <p class="text-lg mt-6 text-center">
-            Tell Player 1 the matching color from the second row <br>
-            of the table below. <br>
-        </p>
-        <table id="tableAnswers" class="answerTable mx-auto"></table>
+        </div>
+        <!-- 10x10 table -->
+            <table id="tableColor" class="colorTable"></table>
+        
+        <!-- Instructions -->
+        <div class="small-table flex flex-col items-center space-y-2 mt-8">
+            <div class="smallTableText">
+                <p class="text-lg text-center">
+                    Tell Player 1 the matching color from the second row <br>
+                    of the table below.
+                </p>
+            </div>
+            <table id="tableAnswers" class="answerTable mx-auto"></table>
+        </div>
+
     </div>
-</div>
-<form method="post" id="submitForm"></form>
+
+    <form method="post" id="submitForm"></form>
+
+    <script>
+        // Save route variables as globals
+        window.colorPool = <%- JSON.stringify(colorPool) %>;
+        window.cellColors = <%- JSON.stringify(cellColors) %>;
+        window.possibleAnswers = <%- JSON.stringify(possibleAnswers) %>;
+        window.isMax = <%- JSON.stringify(isMax) %>;
+        window.timesCleared = <%- JSON.stringify(timesCleared) %>;
+        window.timesToClear = <%- JSON.stringify(timesToClear) %>;
+    </script>
+
+    <script src="/js/puz3_player2.js"></script>
 </body>
 </html>
-<script>
-    //We save route variables here as global variables to be used in our js script
-    window.colorPool = <%- JSON.stringify(colorPool) %>;
-    window.cellColors = <%- JSON.stringify(cellColors) %>;
-    window.possibleAnswers = <%- JSON.stringify(possibleAnswers) %>;
-    window.isMax = <%- JSON.stringify(isMax) %>;
-    window.timesCleared = <%- JSON.stringify(timesCleared) %>;
-    window.timesToClear = <%- JSON.stringify(timesToClear) %>;
-</script>
-<script src="/js/puz3_player2.js"></script>

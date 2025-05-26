@@ -31,14 +31,11 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].style.backgroundColor = randomColors[i].backgroundColor;
     buttons[i].innerHTML = randomColors[i].fontText;
 }
-socket.on('refreshPage', () => {
-    location.reload(); // or trigger any other update
-});
 
 //When a button is pressed, font color is saved, and then checked in puzzle3.js
 function checkColor(button) {
-    //Refresh player2's site
-    socket.emit('newInput');
+    //Make player 2 refresh with new amount of times cleared
+    socket.emit('puzzle3NewInput');
     //Here we use the toHexString() function from w3schools to make sure the
     //font color is saved in the same format as it was originally assigned as,
     //earlier in this script tag. This allows for correct comparisons on the server.

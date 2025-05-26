@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>puz3_player1</title>
-    <link rel="stylesheet" href="/stylesheets/puz3style.css">
+    <link rel="stylesheet" href="/stylesheets/puz3styleplayer1.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/socket.io/socket.io.js"></script>
 
 </head>
 <body style="background-color: #B0903D;" class="min-h-screen flex flex-col items-center justify-start py-10">
 
-<div class="text-center space-y-2">
-    <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black w-[1000px]">
-        Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br> </h1>
-    <h2><span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br></h2>
-    <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
-    Get <%= timesToClear %> correct in a row to win.
-
-    <form method="post" id="buttonForm">
-        <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button1"></button>
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button2"></button>
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button3"></button>
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button4"></button>
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button5"></button>
-        <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button6"></button>
-    </form>
+<div class = "game-container w-full max-w-scree-g flex flex-col items-center justify-start py-10">
+    <div class="text-center space-y-2">
+        <div class="gameInfoHeading">
+            <h1 id="playerInfo" class="bg-yellow-400 text-black text-4xl px-20 py-2 border border-black w-[1000px]">
+                Click on the button with the correct <span class="fontColorShowcase">text color</span>! <br> </h1>
+        </div>
+        <div class="gameInfoP1">
+            <h2><span class="emphasis">Wait</span> for Player 2 to tell you what the correct color is. <br></h2>
+        </div>
+        <div class="scoreboardText">
+            <h2 class="scoreBoard"><%= timesCleared %> / <%= timesToClear %></h2>
+            Get <%= timesToClear %> correct in a row to win.
+        </div>
+        <form method="post" id="buttonForm">
+            <input type="hidden" name="fontColorOfButton" id="fontColorOfButton">
+            <div class="button-wrapper">
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button1"></button>
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button2"></button>
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button3"></button>
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button4"></button>
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button5"></button>
+                <button class="px-8 py-6 text-3xl rounded-lg" onclick="checkColor(this)" type="button" id="button6"></button>
+            </div>
+        </form>
+    </div>
 </div>
+
 <audio id="correctAudio">
     <source src="/sounds/correct.mp3" type="audio/mpeg">
 </audio>

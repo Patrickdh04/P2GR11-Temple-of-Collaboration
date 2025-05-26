@@ -7,26 +7,32 @@
 </head>
 
 <body>
-<div class="game-container">
-    <div class="hanger-container">
-        <img class="hanger" src="/images/ropehanger.png" alt="Rope Hanger">
+    <audio id="correctAudio" src="/sounds/correct.mp3" preload="auto"></audio>
+    <audio id="wrongAudio" src="/sounds/wrong.mp3" preload="auto"></audio>
 
-        <div class="rope-container">
-            <% displayRopes.forEach((rope, index) => { %>
-                <div class="rope-wrapper">
-                    <img onclick="ropeKey(<%= index %>)"
-                         src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.color.toLowerCase() %>rope.png"
-                         alt="<%= rope.color %> Rope">
-                    <div class="rope-label"><%= rope.color %> - <%= rope.rule %></div>
-                </div>
-            <% }) %>
+    <div class="game-container">
+        <div class="hanger-container">
+            <img class="hanger" src="/images/ropehanger.png" alt="Rope Hanger">
+            <div class="rope-container">
+                <% displayRopes.forEach((rope, index) => { %>
+                    <div class="rope-wrapper">
+                        <img onclick="ropeKey(<%= index %>)"
+                             src="/images/<%= rope.folder %>/<%= rope.folder %>_<%= rope.colour.toLowerCase() %>rope.png"
+                             alt="<%= rope.colour %> Rope">
+                    </div>
+                <% }) %>
+            </div>
         </div>
+        <h1 id="gameTitle" class="game-title">
+            Figure out the correct order to pull the ropes based on the clues
+        </h1>
     </div>
-</div>
+    <form id="advanceForm" action="/puzzle3/puz3_player1" method="get" style="display: none;"></form>
 
-<h1 id="gameTitle" class="game-title">
-    Figure out the correct order to pull the ropes based on the clues <span id="testValue"><%= test %></span>
-</h1>
+    <script>
+        window.pullSequence = <%- JSON.stringify(pullSequence) %>;
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/puz2_player1.js"></script>
 </body>
 </html>
-<script src="/js/room2Rope.js"></script>

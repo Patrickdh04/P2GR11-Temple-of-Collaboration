@@ -36,11 +36,9 @@ router.get('/congrats', function (req, res, next) {
 router.post('/puz3_player1', function (req, res, next) {
     console.log("Font color button: " + req.body.fontColorOfButton);
     if (req.body.fontColorOfButton === correctColor) {
-        console.log("You got it right!");
         timesCleared++;
         correctAnswer = true;
     } else {
-        console.log("You got it wrong!");
         timesCleared = 0;
         correctAnswer = false;
     }

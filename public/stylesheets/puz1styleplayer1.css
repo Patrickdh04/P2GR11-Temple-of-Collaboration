@@ -1,0 +1,101 @@
+/* Base page styling */
+body {
+    background-image: url("../images/bgpuz1player1.png");
+    background-repeat: repeat-x;
+    background-size: auto;
+    background-position: top center;
+    background-color: #B0903D;
+    image-rendering: pixelated;
+
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+}
+
+/* Container for layout and spacing */
+.main-container {
+   display: flex;
+   flex-direction: column; 
+   align-items: center;     
+   justify-content: flex-start;
+
+   gap: 1rem;
+   width: 100%;
+   min-height: 100vh;
+   padding-top: 1100px;     
+   text-align: center;
+   z-index: 2;
+}
+
+/* Main title styling */
+.title-heading {
+    font-size: 1.3rem; 
+    padding: 0.5rem 5rem; 
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+}
+
+/* Code symbol table */
+.code-table {
+    table-layout: fixed;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3rem;
+    background-color: transparent;
+    cursor: default;
+}
+
+/* Table cell formatting */
+.code-table td {
+    width: 120px; 
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+
+/* Center and scale images in cells */
+.code-table td img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hieroglyphs row placed above the door */
+.hieroglyphs-table {
+    position: fixed;
+    top: 110px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 6rem;
+}
+
+/* Input field */
+.uppercase-input {
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 0.4rem;
+}
+
+/* Wrong password message */
+.wrong-password {
+    color: red;
+    font-size: 1.5rem;
+}
+
+/* Link styling */
+a {
+    color: #00B7FF;
+}

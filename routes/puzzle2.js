@@ -74,11 +74,6 @@ function buildCorrectParagraph(displayRopes, pullSequence) {
 function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
-
-function buildClue(condition, action) {
-    return `The ${condition} rope to pull is the ${action}.`;
-}
-
 // Generating 3 decoy paragraphs for manual
 
 function buildDecoyParagraphs(ropes, count = 3) {
